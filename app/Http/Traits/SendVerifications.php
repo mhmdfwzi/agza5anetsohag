@@ -18,9 +18,9 @@ trait SendVerifications
 
         // dd($phone_number ,$otp);
 
-        $url = 'https://api.ultramsg.com/instance62549/messages/chat';
+        $url = 'https://api.ultramsg.com/instance625499/messages/chat';
         $params = [
-            'token' => '0ggvbpzghlho2rq6',
+            'token' => '0ggvbpzghlho2rq666',
             'to' => $phone_number,
             'body' => 'كود تفعيل الحساب: ' . $otp . ' aliafandy نسعد بخدمتك', // Modify the message as needed
         ];

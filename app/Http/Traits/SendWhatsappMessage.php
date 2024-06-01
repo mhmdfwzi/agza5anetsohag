@@ -13,9 +13,9 @@ trait sendWhatsAppMessage
     {
 
 
-        $url = 'https://api.ultramsg.com/instance62549/messages/chat';
+        $url = 'https://api.ultramsg.com/instance625499/messages/chat';
         $params = [
-            'token' => '0ggvbpzghlho2rq6',
+            'token' => '0ggvbpzghlho2rq66',
             'to' => $phone_number,
             'body' => $messageBody, // Modify the message as needed
         ];
