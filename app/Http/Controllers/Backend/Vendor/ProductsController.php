@@ -10,6 +10,7 @@ use App\Models\Attribute;
 use App\Models\Brand;
 use App\Models\Category;
 use App\Models\Product;
+use App\Models\ProductName;
 use App\Models\Store;
 use App\Models\Tag;
 use App\Models\Vendor;
@@ -57,7 +58,7 @@ class ProductsController extends Controller
         $store = Store::where('id', $vendor->store_id)->first();
         //$categories = Category::all();
         $categories = $store->categories;
-       
+
         $brands = Brand::all();
         $attributes = Attribute::all();
         return view(
@@ -93,13 +94,13 @@ class ProductsController extends Controller
         // create product model with the $data array
         $product = Product::create($data);
 
-        // get tags from the request 
+        // get tags from the request
         /*
         $tags = json_decode($request->post('tags'));
         $tag_ids = [];
         // get all tags from DB
         $saved_tags = Tag::all();
-        // loop on tags that we get from request 
+        // loop on tags that we get from request
         foreach ($tags as $item) {
             // create slug from this tags
             $slug = Str::slug($item->value);
@@ -183,14 +184,14 @@ class ProductsController extends Controller
         $data = $request->except('image', 'tags');
        // $new_image = $this->uploadImage($request, 'image', 'products');
        $new_image = $this->ProcessImage($request, 'image', 'products', $current_image);
-       
+
         // dd($new_image);
         if ($new_image) {
             $data['image'] = $new_image;
         }
         $product->update($data);
-       
- 
+
+
         return redirect()->route('vendor.products.index');
     }
 
@@ -225,32 +226,44 @@ class ProductsController extends Controller
         $products = Product::select('id','name','price')->orderBy('name', 'asc')->get();
 
         // dd($products);
-        
+
         return view(
             'backend.Vendor_Dashboard.products.edit_products_price',
             compact('products')
         );
     }
-    
+
     public function updateProductsPrice(Request $request) {
         // dd($request->all());
         $productIds = $request->input('product_id');
         $prices = $request->input('price');
 
-    
+
         foreach ($productIds as $key => $productId) {
             // Find the product by ID
             $product = Product::findOrFail($productId);
-    
+
             if ($product) {
                 // Update the product's price
                 $product->price = $prices[$key];
                 $product->save();
             }
         }
-    
+
         // Redirect back or to a specific route after the update
         return redirect()->route('vendor.products.index')->with('success', 'Prices updated successfully');
-        
+
     }
+
+    public function autocomplete(Request $request)
+    {
+        $term = $request->input('term');
+
+        $products = ProductName::where('name', 'LIKE', '%' . $term . '%')
+            ->select('name', 'id') // Select both name and id
+            ->get();
+
+        return response()->json($products);
+    }
+
 }

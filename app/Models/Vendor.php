@@ -14,7 +14,7 @@ class Vendor extends User
     use Notifiable ;
     use HasApiTokens ;
     use HasRoles;
-    protected $fillable = ['name','phone', 'password', 'store_id'];
+    protected $fillable = ['name','email','phone', 'password', 'store_id'];
 
     public function store()
     {

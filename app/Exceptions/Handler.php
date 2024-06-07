@@ -2,6 +2,7 @@
 
 namespace App\Exceptions;
 
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Database\QueryException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Illuminate\Http\Request;
@@ -14,7 +15,7 @@ class Handler extends ExceptionHandler
 	public function render($request, Throwable $exception)
 {
   if ($exception instanceof TokenMismatchException){
-  	return redirect()->back();    
+  	return redirect()->back();
   }
 
   return parent::render($request, $exception);
@@ -27,7 +28,7 @@ class Handler extends ExceptionHandler
     protected $dontReport = [
         //
     ];
-	
+
 
     /**
      * A list of the inputs that are never flashed for validation exceptions.
@@ -58,7 +59,7 @@ class Handler extends ExceptionHandler
 
         $this->renderable(function(QueryException $e ,Request $request){
 
-            // custom message for delete foreignKey errors  
+            // custom message for delete foreignKey errors
             if($e->getCode() == 23000){
                 $message = "Foreign Key Constraint Failed";
             }else {
@@ -76,5 +77,7 @@ class Handler extends ExceptionHandler
             ])->with('info',$message);
 
         });
+
+
     }
 }

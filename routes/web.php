@@ -28,14 +28,14 @@ use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 
 Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    // Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    // Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
 Route::post('verify', [CustomVerificationController::class, 'verify']) ->name('custom_verification');
 
-Route::get('/verify', function () { return view('frontend.auth.verify');})->name('custom_verification');
+Route::get('/verify_code', function () { return view('frontend.auth.verify');})->name('custom_verification_code');
 
 Route::get('/resendOTP', [CustomVerificationController::class, 'resendOTP']) ->name('resendOTP');
 

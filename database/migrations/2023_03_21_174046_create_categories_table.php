@@ -16,16 +16,16 @@ return new class extends Migration
         Schema::create('categories', function (Blueprint $table) {
             $table->id();
 
-            // restrictOnDelete(Default) // if parent row has childeren rows it can't be deleted 
+            // restrictOnDelete(Default) // if parent row has childeren rows it can't be deleted
             // cascadeOnDelete // if parent row has childeren rows they will be deleted when it delete
-            // nullOnDelete   // if parent row has childeren rows they will be null when it delete 
-            $table->foreignId('parent_id')
-            ->nullable()
-            ->constrained('categories','id')
-            ->nullOnDelete();
+            // nullOnDelete   // if parent row has childeren rows they will be null when it delete
+            // $table->foreignId('parent_id')
+            // ->nullable()
+            // ->constrained('categories','id')
+            // ->nullOnDelete();
 
             $table->string('name');
-            $table->string('slug')->unique();
+            $table->string('slug');
             $table->text('description')->nullable();
             $table->string('image')->nullable();
             $table->boolean('featured')->default(0);

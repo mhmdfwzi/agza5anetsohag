@@ -17,7 +17,7 @@ class BannerController extends Controller
     {
         $this->authorizeResource(Banner::class,'banner');
     }
-    
+
     /**
      * Display a listing of the resource.
      *
@@ -30,8 +30,8 @@ class BannerController extends Controller
 
         return view('backend.Admin_Dashboard.banners.index',compact('banners'));
 
-        //  
-        
+        //
+
     }
 
     /**
@@ -64,9 +64,9 @@ class BannerController extends Controller
         $data['image'] = $this->ProcessImage($request, 'image', 'banners',600,600);
 
         // Create the banner with the validated and modified data
-        Banner::create($data); 
+        Banner::create($data);
 
-        return redirect()->route('admin.banners.index')->with('toast_success','Banner Created Successfully');;
+        return redirect()->route('admin.banners.index')->with('toast_success','Banner Created Successfully');
     }
 
     /**
@@ -107,9 +107,9 @@ class BannerController extends Controller
 
         // Validate the request data
         $validatedData = $request->validated();
-        
+
         $banner = Banner::findOrFail($id);
-        
+
         $data = $request->except('image');
 
         $data['image'] = $this->ProcessImage($request, 'image', 'banners' ,600,600, $banner->image);

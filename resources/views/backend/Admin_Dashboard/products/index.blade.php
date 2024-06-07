@@ -30,14 +30,23 @@
         <div class="card card-statistics h-100">
             <div class="card-body">
 
+            <form action="{{ route('admin.productName.import') }}" method="POST" enctype="multipart/form-data">
+                    @csrf
+                    <div class="form-group">
+                        <label for="file">Choose Excel File</label>
+                        <input type="file" name="file" class="form-control" id="file">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Import</button>
+                </form>
+
                 <table id="table_id" class="display">
                     <thead>
-                        <tr> 
-                            <th>{{ trans('products_trans.Name') }}  </th> 
-                                     
+                        <tr>
+                            <th>{{ trans('products_trans.Name') }}  </th>
+
                            {{-- <th>{{ trans('products_trans.Variants_Count') }}</th>--}}
-                           
-                            
+
+
                         </tr>
                     </thead>
                     <tbody>
@@ -46,19 +55,19 @@
 
 
 <td>
-    
+
 <table   style="width: 100%">
     <tr><td colspan="2" style="text-align: right">{{ $product->id }} - {{ $product->name }}</td></tr>
     <tr>
         <td rowspan="2" width="55">
-            
+
             <img src="{{$product->image_url}}" height="50" width="50" alt=""></td>
         <td>{{ $product->store->name }}</td>
         <tr><td>{{ $product->category->name }}</td></tr>
 
     </tr>
     <tr valign='top'><td colspan="2"  >
-  
+
 
         @if ($product->status == 'active')
         <span class="badge badge-rounded badge-success p-2 mb-2">
@@ -81,7 +90,7 @@
             class="btn btn-warning btn-sm">
             <i class="fa fa-edit"></i>
         </a>
-       
+
         <form action="{{ Route('admin.products.destroy', $product->id) }}" method="post"
             style="display:inline">
             @csrf
@@ -91,18 +100,18 @@
                 <i class="fa fa-trash"></i>
             </button>
         </form>
-    
-     
+
+
 
         <a href="{{ route('admin.product_variants.show', $product->id) }}" class="btn btn-info btn-sm">
             {{$product->product_variants_count}}
             </a>
-            
+
         <a href="{{Route('admin.product_variants.create',$product->id)}}" class="btn btn-primary btn-sm">
             {{ trans('products_trans.Add_Variant') }}  </a>
 
 
-    
+
     </td></tr>
 </table>
 <hr>
@@ -111,18 +120,18 @@
 
 
 
-                 
-                                 
-                               
+
+
+
 
                                {{--
                                 <td>
-                                    
+
                                 </td>
-                                 --}} 
+                                 --}}
 
 
-             
+
                             </tr>
                         @endforeach
                     </tbody>

@@ -24,28 +24,18 @@ class StoreCategoryRequest extends FormRequest
      */
     public function rules()
     {
-        return 
+        return
         [
             'name'=>[
                 'required',
                 'min:3',
                 'max:355',
                 'unique:categories,name',
-                
-                // function($attributes, $value ,$fails){
-                //     if(strtolower($value) == 'laravel'){
-                //         $fails('This is name forbidden');
-                //     }
-                // }
-
-                // new Filter(['laravel','flutter','html'])
-                
-                'filter:laravel,flutter'
             ],
-            'parent_id'=>['nullable','int','exists:categories,id'],
+            // 'parent_id'=>['nullable','int','exists:categories,id'],
             'image'=>['image'],
             'status'=>'in:active,inactive',
-           
+
         ];
     }
 

@@ -13,7 +13,7 @@ class FrontLayout extends Component
      *
      * @return void
      */
-    public function __construct($title=null)
+    public function __construct($title = null)
     {
         //
         // if title = null return config('app.name')
@@ -27,9 +27,8 @@ class FrontLayout extends Component
      */
     public function render()
     {
-        $main_categories = Category::where('status','=','active')-> where('parent_id', '=', null)->get();
-        $sub_categories = Category::where('status','=','active')-> where('parent_id','!=','null')->get();
-        
-        return view('frontend.layouts.front',compact('sub_categories','main_categories'));
+        $main_categories = Category::where('status', '=', 'active')->get();
+
+        return view('frontend.layouts.front', compact('main_categories'));
     }
 }

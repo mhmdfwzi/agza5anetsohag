@@ -29,7 +29,7 @@
     <div class="col-md-12 mb-30">
         <div class="card card-statistics h-100">
             <div class="card-body">
-                
+
                 <table  style="display: none">
                     <thead>
                         <tr>
@@ -50,7 +50,7 @@
                     <tbody>
                         @foreach ($products as $product)
                             <tr>
-                                <td> 
+                                <td>
                                 </td>
                                 <td>{{ $product->id }}</td>
                                 <td>{{ $product->name }}</td>
@@ -64,11 +64,11 @@
                                         <span class="badge badge-rounded badge-success p-2 mb-2">
                                             {{ trans('products_trans.Active') }}
                                         </span>
-                                    @else 
+                                    @else
                                         <span class="badge badge-rounded badge-warning p-2 mb-2">
                                             {{ trans('products_trans.Draft') }}
                                         </span>
-                                    
+
                                     @endif
                                 </td>
 
@@ -78,7 +78,7 @@
                                     </a>
                                 </td>
                                 <td>
-                                    <a href="{{Route('vendor.product_variants.create',$product->id)}}" class="btn btn-primary btn-sm">
+                                    <a href="{{route('vendor.product_variants.create',$product->id)}}" class="btn btn-primary btn-sm">
                                         {{ trans('products_trans.Add_Variant') }}
                                     </a>
                                 </td>
@@ -87,13 +87,13 @@
                                     <a href="" class="btn btn-primary btn-sm">
                                         <i class="fa fa-eye"></i>
                                     </a>
-                                    <a href="{{ Route('vendor.products.edit', $product->id) }}"
+                                    <a href="{{ route('vendor.products.edit', $product->id) }}"
                                         class="btn btn-warning btn-sm">
                                         <i class="fa fa-edit"></i>
                                     </a>
 
 
-                                    <form action="{{ Route('vendor.products.destroy', $product->id) }}" method="post"
+                                    <form action="{{ route('vendor.products.destroy', $product->id) }}" method="post"
                                         style="display:inline">
                                         @csrf
                                         @method('delete')
@@ -104,8 +104,8 @@
                                     </form>
 
                                     {{-- <a href="" class="btn btn-danger btn-sm">
-                                    <i class="fa fa-trash"></i> 
-                                    
+                                    <i class="fa fa-trash"></i>
+
                                 </a>     --}}
                                 </td>
 
@@ -114,7 +114,7 @@
                     </tbody>
                 </table>
 {{----------------------------------------------------------------------------------------------------------------}}
-           
+
                     @foreach ($products as $product)
                     <table style="width: 100%; background-color:#f4f5f7; padding:5px" >
                         <tr><td colspan="3">{{ $product->name}}</td></tr>
@@ -123,8 +123,8 @@
                         <tr><td width='60'>السعر</td>
                             <td style="text-align: right">
                                 {{ $product->price }}
-                        
-                            
+
+
                         </td></tr>
                         <tr><td>العدد</td><td style="text-align: right">{{ $product->quantity }}</td></tr>
                         <tr><td>المبيعات</td><td style="text-align: right">230</td></tr>
@@ -135,43 +135,43 @@
                                 {{ trans('products_trans.Active') }}
                             </span>
                         @elseif($product->status == 'inactive')
-                            
+
                             <span class="badge badge-rounded badge-danger p-2 mb-2">
                                غير نشط
                             </span>
                         @endif
                             </td>
-                            
-                            <td style="text-align: right"><a href="{{ Route('vendor.products.edit', $product->id) }}"
+
+                            <td style="text-align: right"><a href="{{ route('vendor.products.edit', $product->id) }}"
                             class="btn btn-warning btn-sm">
                             <i class="fa fa-edit"></i>
                         </a>
-                         
+
                         <a href="" class="btn btn-primary btn-sm">
                             <i class="fa fa-eye"></i>
                         </a>
 
-                        <a href="{{Route('vendor.product_variants.create',$product->id)}}" class="btn btn-primary btn-sm">
+                        <a href="{{route('vendor.product_variants.create',$product->id)}}" class="btn btn-primary btn-sm">
                             الخصائص {{$product->product_variants_count}}
                         </a>
                     </td>
                 </tr>
                         <tr><td> </td>
                             <td>
-                            
+
                         </td></tr>
 
                         </table>
                         <hr style="padding-bottom: 30px">
                             @endforeach
-                        
-
-                 
 
 
 
 
-                
+
+
+
+
             </div>
         </div>
     </div>

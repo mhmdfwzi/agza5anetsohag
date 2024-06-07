@@ -37,6 +37,11 @@
 {{-- @include('sweetalert::alert') --}}
 
 <script>
+     @if ($errors->any())
+        @foreach ($errors->all() as $error)
+            toastr.error('{{ $error }}');
+        @endforeach
+    @endif
     @if (session('toast_success'))
         toastr.success("{{ session('toast_success') }}", "", {
             "timeOut": 1000
@@ -57,6 +62,8 @@
         request()->routeIs('admin.attributes.index') ||
         request()->routeIs('admin.attribute_values.index') ||
         request()->routeIs('admin.coupons.index') ||
+        request()->routeIs('admin.productSuggest.index') ||
+        request()->routeIs('admin.productName.index') ||
         request()->routeIs('admin.roles.index') ||
         request()->routeIs('admin.admins.index') ||
         request()->routeIs('admin.reports.orders') ||
@@ -73,6 +80,7 @@
         request()->routeIs('vendor.product_variants.index') ||
         request()->routeIs('vendor.product_variants.create') ||
         request()->routeIs('vendor.coupons.index') ||
+        request()->routeIs('vendor.productSuggest.index') ||
         request()->routeIs('vendor.notifications.index'))
     <script src="{{ asset('backend/assets/datatables/datatables.min.js') }}"></script>
     <script src="{{ asset('backend/assets/datatables/DataTables-1.10.16/js/dataTables.bootstrap4.min.js') }}"></script>
@@ -112,12 +120,13 @@
     request()->routeIs('delivery.orders.create'))
 @endif --}}
 
-{{-- 
+{{--
     @if (App::getLocale() == 'ar')
         <script>
             $(document).ready(function() {
 
                 var datatable = $('#custom_table').DataTable({
+                    processing:true,
                     stateSave: true,
                     sortable: true,
                     dom: 'Bfrtip',
@@ -143,6 +152,7 @@
         <script>
             $(document).ready(function() {
                 $('#custom_table').DataTable({
+                    processing:true,
                     stateSave: true,
                     sortable: true,
                     dom: 'Bfrtip',
@@ -164,7 +174,7 @@
                 });
             });
         </script>
-    @endif 
+    @endif
 --}}
 
 

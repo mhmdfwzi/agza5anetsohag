@@ -2,7 +2,7 @@
 @section('css')
 
 @section('title')
-    {{ trans('categories_trans.Categories') }}
+{{ trans('categories_trans.Categories') }}
 @stop
 @endsection
 @section('page-header')
@@ -14,9 +14,10 @@
         </div>
         <div class="col-sm-6">
             <ol class="breadcrumb pt-0 pr-0 float-left float-sm-right ">
-                <li class="breadcrumb-item"><a href="#"
-                        class="default-color">{{ trans('categories_trans.Trash_Categories') }}</a></li>
-                <li class="breadcrumb-item active">{{ trans('categories_trans.Categories') }}</li>
+                <li class="breadcrumb-item"><a href="#" class="default-color">{{ trans('categories_trans.Trash_Categories') }}</a>
+                </li>
+                <li class="breadcrumb-item active">{{ trans('categories_trans.Categories') }}
+                </li>
             </ol>
         </div>
     </div>
@@ -36,66 +37,66 @@
                             <th></th>
                             <th>{{ trans('categories_trans.Id') }}</th>
                             <th>{{ trans('categories_trans.Name') }}</th>
-                            <th>{{ trans('categories_trans.Parent') }}</th>
+                            <!-- <th>{{ trans('categories_trans.Parent') }}</th> -->
                             <th>{{ trans('categories_trans.Status') }}</th>
-                            <th>{{ trans('categories_trans.Created_at') }}</th>
+                            <th>{{ trans('categories_trans.Created_at') }}
+                            </th>
                             <th>{{ trans('categories_trans.Control') }}</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach ($categories as $category)
-                            <tr>
-                                <td>
+                        <tr>
+                            <td>
 
-                                    @if ($category->image)
-                                        <img src="{{ asset('storage/' . $category->image) }}" height="50"
-                                            width="50" alt="">
-                                    @else
-                                        <img src="{{ asset('backend/assets/images/profile-avatar.jpg') }}"
-                                            height="50" width="50" alt="">
-                                    @endif
-                                </td>
-                                <td>{{ $category->id }}</td>
-                                <td>{{ $category->name }}</td>
-                                <td>{{ $category->parent_id }}</td>
-                                <td>
-                                    @if ($category->status == 'active')
-                                        <span class="badge badge-rounded badge-success p-2 mb-2">
-                                            {{ trans('categories_trans.Active') }}
-                                        </span>
-                                    @elseif($category->status == 'inactive')
-                                        <span class="badge badge-rounded badge-danger p-2 mb-2">
-                                            {{ trans('categories_trans.Inactive') }}
-                                        </span>
-                                    @endif
-                                </td>
-                                <td>{{ $category->created_at }}</td>
+                                @if ($category->image)
+                                <img src="{{ asset('storage/' . $category->image) }}" height="50" width="50" alt="">
+                                @else
+                                <img src="{{ asset('backend/assets/images/profile-avatar.jpg') }}" height="50" width="50" alt="">
+                                @endif
+                            </td>
+                            <td>{{ $category->id }}</td>
+                            <td>{{ $category->name }}</td>
+                            <!-- <td>{{ $category->parent_id }}</td> -->
+                            <td>
+                                @if ($category->status == 'active')
+                                <span class="badge badge-rounded badge-success p-2 mb-2">
+                                    {{ trans('categories_trans.Active') }}
+                                </span>
+                                @elseif($category->status == 'inactive')
+                                <span class="badge badge-rounded badge-danger p-2 mb-2">
+                                    {{ trans('categories_trans.Inactive') }}
+                                </span>
+                                @endif
+                            </td>
+                            <td>{{ $category->created_at }}</td>
 
-                                <td>
-                                    <form action="{{Route('backend.categories.restore',$category ->id)}}" method="post" style="display:inline">
-                                        @csrf
-                                        @method('put')
-                                        
-                                        <button type="submit" class="btn btn-success btn-sm" >
-                                            <i class="fa fa-edit"></i>
-                                            إعادة
-                                        </button>   
-                                    </form>
-                                   
-                                    <form action="{{Route('backend.categories.forceDelete',$category ->id)}}" method="post" style="display:inline">
-                                        @csrf
-                                        @method('delete')
-                                        
-                                        <button type="submit" class="btn btn-danger btn-sm" >
-                                            <i class="fa fa-trash"></i> 
-                                            حذف نهائى
-                                        </button>   
-                                    </form>
-                                </td>
+                            <td>
+                                <form action="{{Route('backend.categories.restore',$category ->id)}}" method="post" style="display:inline">
+                                    @csrf
+                                    @method('put')
 
-                            </tr>
+                                    <button type="submit" class="btn btn-success btn-sm">
+                                        <i class="fa fa-edit"></i>
+                                        إعادة
+                                    </button>
+                                </form>
+
+                                <form action="{{Route('backend.categories.forceDelete',$category ->id)}}" method="post" style="display:inline">
+                                    @csrf
+                                    @method('delete')
+
+                                    <button type="submit" class="btn btn-danger btn-sm">
+                                        <i class="fa fa-trash"></i>
+                                        حذف نهائى
+                                    </button>
+                                </form>
+                            </td>
+
+                        </tr>
                         @endforeach
                     </tbody>
+
                 </table>
             </div>
         </div>

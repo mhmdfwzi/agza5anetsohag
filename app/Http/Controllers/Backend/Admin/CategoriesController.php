@@ -20,26 +20,23 @@ class CategoriesController extends Controller
      */
     public function index()
     {
-        
-        //
-        // $categories = Category::all(); //Return collection object , return all data
-        // //$categories->first(); =>  $categories[0];
-        
-        $categories = Category::with('parent')
+
+
+
+        $categories = Category::
         // ->select('categories.*')
         // ->selectRaw('(SELECT COUNT(*) FROM products WHERE category_id = categories.id) as products_count')
-        ->withCount([
+        withCount([
             'products' => function($query){
                 $query->where('status','=','active');
             }
         ])
-        // ->withCount('products')
         ->get();
 
 
         return view('backend.Admin_Dashboard.categories.index',compact('categories'));
     }
- 
+
     /**
      * Show the form for creating a new resource.
      *
@@ -61,25 +58,23 @@ class CategoriesController extends Controller
      */
     public function store(StoreCategoryRequest $request)
     {
+        try {
+            $request->validated();
 
-        $request->validated();
+            // Request Merge
+            $request->merge([
+                'slug' => Str::slug($request->post('name'))
+            ]);
 
-        // Request Merge
-        $request->merge([
-            'slug'=>Str::slug($request->post('name'))
-        ]);
+            $data = $request->except('image');
+            $data['image'] = $this->ProcessImage($request, 'image', 'categories');
 
-        $data = $request->except('image');
+            Category::create($data);
 
-        $data['image'] = $this->ProcessImage($request,'image','categories');
-      //$data['image'] = $this->ProcessImage($request, 'image', 'products');
-       // dd($data);
-        Category::create($data);
-
-        // PRG
-        return redirect()->route('admin.categories.create');
-        
-
+            return redirect()->route('admin.categories.index')->with('toast_success', 'Category Created Successfully');
+        } catch (\Illuminate\Validation\ValidationException $e) {
+            return redirect()->back()->withErrors($e->errors())->withInput();
+        }
     }
 
     /**
@@ -106,15 +101,15 @@ class CategoriesController extends Controller
     {
         $category = Category::findOrFail($id);
 
-        // Select * FROM categories WHERE id <> $id 
+        // Select * FROM categories WHERE id <> $id
         // AND (parent_id IS NUll or parent_id <> $id)
         // <> mean right side not equal left side
-        $parents = Category::where('id','<>',$id)
-        ->where(function($query) use ($id){
-            $query->whereNull('parent_id')->orwhere('parent_id','<>',$id);
-        })->get();
+        // $parents = Category::where('id','<>',$id)
+        // ->where(function($query) use ($id){
+        //     $query->whereNull('parent_id')->orwhere('parent_id','<>',$id);
+        // })->get();
 
-        return view('backend.Admin_Dashboard.categories.edit',compact('category','parents'));
+        return view('backend.Admin_Dashboard.categories.edit',compact('category'));
     }
 
     /**
@@ -190,7 +185,7 @@ class CategoriesController extends Controller
 
         $category->restore();
 
-        return redirect()->route('backend.categories.index');        
+        return redirect()->route('backend.categories.index');
 
     }
 
@@ -201,7 +196,7 @@ class CategoriesController extends Controller
 
         $category->forceDelete();
 
-        return redirect()->route('backend.categories.index');        
+        return redirect()->route('backend.categories.index');
 
     }
 
@@ -218,6 +213,6 @@ class CategoriesController extends Controller
     //             'disk'=>'uploads'
     //         ]);
     //         return  $path;
-        
+
     // }
 }

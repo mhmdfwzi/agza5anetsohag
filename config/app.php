@@ -169,6 +169,9 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
 		 Intervention\Image\ImageServiceProvider::class,
+         Maatwebsite\Excel\ExcelServiceProvider::class,
+
+
 
         /*
          * Package Service Providers...
@@ -200,7 +203,9 @@ return [
 
     'aliases' => Facade::defaultAliases()->merge([
         'Currency' => App\Helpers\Currency::class,
-		'Image' => Intervention\Image\Facades\Image::class
+		'Image' => Intervention\Image\Facades\Image::class,
+        'Excel' => Maatwebsite\Excel\Facades\Excel::class,
+
         // ...
 
     ])->toArray(),

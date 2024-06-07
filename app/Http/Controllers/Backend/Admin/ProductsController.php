@@ -11,6 +11,7 @@ use App\Models\{
     Brand,
     Category,
     Product,
+    ProductName,
     Store,
     Tag
 };
@@ -85,10 +86,10 @@ class ProductsController extends Controller
      */
     public function store(StoreProductRequest $request)
     {
-        
+
 
         $this->authorize('create',Product::class);
-        
+
         $request->validated();
 
         // Merge 'slug' input into the current request's input array
@@ -147,6 +148,18 @@ class ProductsController extends Controller
 
         return view('backend.Admin_Dashboard.products.edit');
     }
+
+    public function autocomplete(Request $request)
+{
+    $term = $request->input('term');
+
+    $products = ProductName::where('name', 'LIKE', '%' . $term . '%')
+        ->select('name', 'id') // Select both name and id
+        ->get(); // Retrieve the matching customers
+
+    return response()->json($products);
+}
+
 
     /**
      * Show the form for editing the specified resource.

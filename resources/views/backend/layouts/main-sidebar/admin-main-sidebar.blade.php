@@ -8,7 +8,7 @@
 
                     <!-- menu item Dashboard-->
                     <li>
-                        <a href="{{ Route('admin.dashboard') }}"><i class="fa-solid fa-house fa-fade"></i><span
+                        <a href="{{ route('admin.dashboard') }}"><i class="fa-solid fa-house fa-fade"></i><span
                                 class="right-nav-text">
                                 {{ trans('sidebar_trans.Dashboard') }}
                             </span>
@@ -41,9 +41,9 @@
                                     <div class="clearfix"></div>
                                 </a>
                                 <ul id="websiteParts-menu" class="collapse">
-                                    <li> <a href="{{ Route('admin.websiteParts.create') }}">{{ trans('sidebar_trans.Add_WebsitePart') }}
+                                    <li> <a href="{{ route('admin.websiteParts.create') }}">{{ trans('sidebar_trans.Add_WebsitePart') }}
                                         </a> </li>
-                                    <li> <a href="{{ Route('admin.websiteParts.index') }}">{{ trans('sidebar_trans.All_WebsiteParts') }}
+                                    <li> <a href="{{ route('admin.websiteParts.index') }}">{{ trans('sidebar_trans.All_WebsiteParts') }}
                                         </a> </li>
 
                                 </ul>
@@ -57,9 +57,9 @@
                                     <div class="clearfix"></div>
                                 </a>
                                 <ul id="banners-menu" class="collapse">
-                                    <li> <a href="{{ Route('admin.banners.create') }}">{{ trans('sidebar_trans.Add_Banner') }}
+                                    <li> <a href="{{ route('admin.banners.create') }}">{{ trans('sidebar_trans.Add_Banner') }}
                                         </a> </li>
-                                    <li> <a href="{{ Route('admin.banners.index') }}">{{ trans('sidebar_trans.All_Banners') }}
+                                    <li> <a href="{{ route('admin.banners.index') }}">{{ trans('sidebar_trans.All_Banners') }}
                                         </a> </li>
                                 </ul>
                             </li>
@@ -91,9 +91,9 @@
                                     <div class="clearfix"></div>
                                 </a>
                                 <ul id="stores-menu" class="collapse">
-                                    <li> <a href="{{ Route('admin.stores.create') }}">{{ trans('sidebar_trans.Add_Store') }}
+                                    <li> <a href="{{ route('admin.stores.create') }}">{{ trans('sidebar_trans.Add_Store') }}
                                         </a> </li>
-                                    <li> <a href="{{ Route('admin.stores.index') }}">{{ trans('sidebar_trans.All_Stores') }}
+                                    <li> <a href="{{ route('admin.stores.index') }}">{{ trans('sidebar_trans.All_Stores') }}
                                         </a> </li>
                                 </ul>
                             </li>
@@ -107,9 +107,9 @@
                                     <div class="clearfix"></div>
                                 </a>
                                 <ul id="destinations-menu" class="collapse">
-                                    <li> <a href="{{ Route('admin.destinations.create') }}">{{ trans('sidebar_trans.Add_Destination') }}
+                                    <li> <a href="{{ route('admin.destinations.create') }}">{{ trans('sidebar_trans.Add_Destination') }}
                                         </a> </li>
-                                    <li> <a href="{{ Route('admin.destinations.index') }}">{{ trans('sidebar_trans.All_Destinations') }}
+                                    <li> <a href="{{ route('admin.destinations.index') }}">{{ trans('sidebar_trans.All_Destinations') }}
                                         </a> </li>
                                 </ul>
                             </li>
@@ -122,9 +122,9 @@
                                     <div class="clearfix"></div>
                                 </a>
                                 <ul id="vendors-menu" class="collapse">
-                                    <li> <a href="{{ Route('admin.vendors.create') }}">{{ trans('sidebar_trans.Add_Vendor') }}
+                                    <li> <a href="{{ route('admin.vendors.create') }}">{{ trans('sidebar_trans.Add_Vendor') }}
                                         </a> </li>
-                                    <li> <a href="{{ Route('admin.vendors.index') }}">{{ trans('sidebar_trans.All_Vendors') }}
+                                    <li> <a href="{{ route('admin.vendors.index') }}">{{ trans('sidebar_trans.All_Vendors') }}
                                         </a> </li>
                                 </ul>
                             </li>
@@ -139,9 +139,9 @@
                                     <div class="clearfix"></div>
                                 </a>
                                 <ul id="deliveries-menu" class="collapse">
-                                    <li> <a href="{{ Route('admin.deliveries.create') }}">{{ trans('sidebar_trans.Add_Delivery') }}
+                                    <li> <a href="{{ route('admin.deliveries.create') }}">{{ trans('sidebar_trans.Add_Delivery') }}
                                         </a> </li>
-                                    <li> <a href="{{ Route('admin.deliveries.index') }}">{{ trans('sidebar_trans.All_Deliveries') }}
+                                    <li> <a href="{{ route('admin.deliveries.index') }}">{{ trans('sidebar_trans.All_Deliveries') }}
                                         </a> </li>
                                 </ul>
                             </li>
@@ -178,12 +178,12 @@
                                 </a>
                                 <ul id="brands-menu" class="collapse">
                                     @can('create', 'App\Models\Brand')
-                                        <li> <a href="{{ Route('admin.brands.create') }}">{{ trans('sidebar_trans.Add_Brand') }}
+                                        <li> <a href="{{ route('admin.brands.create') }}">{{ trans('sidebar_trans.Add_Brand') }}
                                             </a> </li>
                                     @endcan
                                     @can('view', 'App\Models\Brand')
                                         <li> <a
-                                                href="{{ Route('admin.brands.index') }}">{{ trans('sidebar_trans.All_Brands') }}</a>
+                                                href="{{ route('admin.brands.index') }}">{{ trans('sidebar_trans.All_Brands') }}</a>
                                         </li>
                                     @endcan
                                 </ul>
@@ -199,13 +199,13 @@
                                     <div class="clearfix"></div>
                                 </a>
                                 <ul id="categories-menu" class="collapse">
-                                    <li> <a href="{{ Route('admin.categories.create') }}">{{ trans('sidebar_trans.Add_Category') }}
+                                    <li> <a href="{{ route('admin.categories.create') }}">{{ trans('sidebar_trans.Add_Category') }}
                                         </a> </li>
                                     <li> <a
-                                            href="{{ Route('admin.categories.index') }}">{{ trans('sidebar_trans.All_Categories') }}</a>
+                                            href="{{ route('admin.categories.index') }}">{{ trans('sidebar_trans.All_Categories') }}</a>
                                     </li>
                                     <li> <a
-                                            href="{{ Route('admin.categories.trash') }}">{{ trans('sidebar_trans.Trash_Categories') }}</a>
+                                            href="{{ route('admin.categories.trash') }}">{{ trans('sidebar_trans.Trash_Categories') }}</a>
                                     </li>
 
                                 </ul>
@@ -220,11 +220,19 @@
                                     <div class="clearfix"></div>
                                 </a>
                                 <ul id="products-menu" class="collapse">
-                                    <li> <a href="{{ Route('admin.products.create') }}">{{ trans('sidebar_trans.Add_Product') }}
+                                    <li> <a href="{{ route('admin.products.create') }}">{{ trans('sidebar_trans.Add_Product') }}
                                         </a> </li>
                                     <li> <a
-                                            href="{{ Route('admin.products.index') }}">{{ trans('sidebar_trans.All_Products') }}</a>
+                                            href="{{ route('admin.products.index') }}">{{ trans('sidebar_trans.All_Products') }}</a>
                                     </li>
+
+                                    <li> <a
+                                    href="{{ route('admin.productSuggest.index') }}">{{ trans('sidebar_trans.All_Product_Suggest') }}</a>
+                            </li>
+
+                            <li> <a
+                                    href="{{ route('admin.productName.index') }}">{{ trans('sidebar_trans.All_Product_Names') }}</a>
+                            </li>
 
                                 </ul>
                             </li>
@@ -241,10 +249,10 @@
                                     <div class="clearfix"></div>
                                 </a>
                                 <ul id="product_properties-menu" class="collapse">
-                                    <li> <a href="{{ Route('admin.product_properties.create') }}">{{ trans('sidebar_trans.Add_Product_Properties') }}
+                                    <li> <a href="{{ route('admin.product_properties.create') }}">{{ trans('sidebar_trans.Add_Product_Properties') }}
                                         </a> </li>
                                     <li> <a
-                                            href="{{ Route('admin.product_properties.index') }}">{{ trans('sidebar_trans.All_Product_Properties') }}</a>
+                                            href="{{ route('admin.product_properties.index') }}">{{ trans('sidebar_trans.All_Product_Properties') }}</a>
                                     </li>
 
                                 </ul>
@@ -261,10 +269,10 @@
                                     <div class="clearfix"></div>
                                 </a>
                                 <ul id="attributes-menu" class="collapse">
-                                    <li> <a href="{{ Route('admin.attributes.create') }}">{{ trans('sidebar_trans.Add_Attribute') }}
+                                    <li> <a href="{{ route('admin.attributes.create') }}">{{ trans('sidebar_trans.Add_Attribute') }}
                                         </a> </li>
                                     <li> <a
-                                            href="{{ Route('admin.attributes.index') }}">{{ trans('sidebar_trans.All_Attributes') }}</a>
+                                            href="{{ route('admin.attributes.index') }}">{{ trans('sidebar_trans.All_Attributes') }}</a>
                                     </li>
 
                                 </ul>
@@ -281,10 +289,10 @@
                                     <div class="clearfix"></div>
                                 </a>
                                 <ul id="attribute_values-menu" class="collapse">
-                                    <li> <a href="{{ Route('admin.attribute_values.create') }}">{{ trans('sidebar_trans.Add_Attribute_Value') }}
+                                    <li> <a href="{{ route('admin.attribute_values.create') }}">{{ trans('sidebar_trans.Add_Attribute_Value') }}
                                         </a> </li>
                                     <li> <a
-                                            href="{{ Route('admin.attribute_values.index') }}">{{ trans('sidebar_trans.All_Attribute_Values') }}</a>
+                                            href="{{ route('admin.attribute_values.index') }}">{{ trans('sidebar_trans.All_Attribute_Values') }}</a>
                                     </li>
 
                                 </ul>
@@ -301,11 +309,11 @@
                                     <div class="clearfix"></div>
                                 </a>
                                 <ul id="product_variants-menu" class="collapse">
-                                    {{-- <li> <a href="{{ Route('admin.product_variants.create') }}">{{ trans('sidebar_trans.Add_Product_Variant') }} --}}
+                                    {{-- <li> <a href="{{ route('admin.product_variants.create') }}">{{ trans('sidebar_trans.Add_Product_Variant') }} --}}
                                     </a>
                             </li>
                             <li> <a
-                                    href="{{ Route('admin.product_variants.index') }}">{{ trans('sidebar_trans.All_Product_Variants') }}</a>
+                                    href="{{ route('admin.product_variants.index') }}">{{ trans('sidebar_trans.All_Product_Variants') }}</a>
                             </li>
 
                         </ul>
@@ -321,10 +329,10 @@
                             <div class="clearfix"></div>
                         </a>
                         <ul id="coupons-menu" class="collapse">
-                            <li> <a href="{{ Route('admin.coupons.create') }}">{{ trans('sidebar_trans.Add_Coupon') }}
+                            <li> <a href="{{ route('admin.coupons.create') }}">{{ trans('sidebar_trans.Add_Coupon') }}
                                 </a> </li>
                             <li> <a
-                                    href="{{ Route('admin.coupons.index') }}">{{ trans('sidebar_trans.All_Coupons') }}</a>
+                                    href="{{ route('admin.coupons.index') }}">{{ trans('sidebar_trans.All_Coupons') }}</a>
                             </li>
 
                         </ul>
@@ -340,7 +348,7 @@
                         </a>
                         <ul id="orders-menu" class="collapse">
                             <li> <a
-                                    href="{{ Route('admin.orders.index') }}">{{ trans('sidebar_trans.All_Orders') }}</a>
+                                    href="{{ route('admin.orders.index') }}">{{ trans('sidebar_trans.All_Orders') }}</a>
                             </li>
                         </ul>
                     </li>
@@ -374,10 +382,10 @@
                                 <div class="clearfix"></div>
                             </a>
                             <ul id="roles-menu" class="collapse">
-                                <li> <a href="{{ Route('admin.roles.create') }}">{{ trans('sidebar_trans.Add_Role') }}
+                                <li> <a href="{{ route('admin.roles.create') }}">{{ trans('sidebar_trans.Add_Role') }}
                                     </a> </li>
                                 <li> <a
-                                        href="{{ Route('admin.roles.index') }}">{{ trans('sidebar_trans.All_Roles') }}</a>
+                                        href="{{ route('admin.roles.index') }}">{{ trans('sidebar_trans.All_Roles') }}</a>
                                 </li>
                             </ul>
                         </li>
@@ -394,10 +402,10 @@
                                 <div class="clearfix"></div>
                             </a>
                             <ul id="admins-menu" class="collapse">
-                                <li> <a href="{{ Route('admin.admins.create') }}">{{ trans('sidebar_trans.Add_Admin') }}
+                                <li> <a href="{{ route('admin.admins.create') }}">{{ trans('sidebar_trans.Add_Admin') }}
                                     </a> </li>
                                 <li> <a
-                                        href="{{ Route('admin.admins.index') }}">{{ trans('sidebar_trans.All_Admins') }}</a>
+                                        href="{{ route('admin.admins.index') }}">{{ trans('sidebar_trans.All_Admins') }}</a>
                                 </li>
                             </ul>
                         </li>
@@ -485,8 +493,8 @@
                             <div class="clearfix"></div>
                         </a>
                         <ul id="websiteParts-menu" class="collapse" data-parent="#sidebarnav">
-                            <li> <a href="{{Route('admin.websiteParts.create')}}">{{ trans('sidebar_trans.Add_WebsitePart') }} </a> </li>
-                            <li> <a href="{{Route('admin.websiteParts.index')}}">{{ trans('sidebar_trans.All_WebsiteParts') }} </a> </li>
+                            <li> <a href="{{route('admin.websiteParts.create')}}">{{ trans('sidebar_trans.Add_WebsitePart') }} </a> </li>
+                            <li> <a href="{{route('admin.websiteParts.index')}}">{{ trans('sidebar_trans.All_WebsiteParts') }} </a> </li>
 
                         </ul>
                     </li> --}}
@@ -500,8 +508,8 @@
                             <div class="clearfix"></div>
                         </a>
                         <ul id="banners-menu" class="collapse" data-parent="#sidebarnav">
-                            <li> <a href="{{Route('admin.banners.create')}}">{{ trans('sidebar_trans.Add_Banner') }} </a> </li>
-                            <li> <a href="{{Route('admin.banners.index')}}">{{ trans('sidebar_trans.All_Banners') }} </a> </li>
+                            <li> <a href="{{route('admin.banners.create')}}">{{ trans('sidebar_trans.Add_Banner') }} </a> </li>
+                            <li> <a href="{{route('admin.banners.index')}}">{{ trans('sidebar_trans.All_Banners') }} </a> </li>
                         </ul>
                     </li> --}}
 
@@ -515,10 +523,10 @@
                         </a>
                         <ul id="brands-menu" class="collapse" data-parent="#sidebarnav">
                             @can('create', 'App\Models\Brand')
-                            <li> <a href="{{Route('admin.brands.create')}}">{{ trans('sidebar_trans.Add_Brand') }} </a> </li>
+                            <li> <a href="{{route('admin.brands.create')}}">{{ trans('sidebar_trans.Add_Brand') }} </a> </li>
                             @endcan
                             @can('view', 'App\Models\Brand')
-                            <li> <a href="{{Route('admin.brands.index')}}">{{ trans('sidebar_trans.All_Brands') }}</a> </li>
+                            <li> <a href="{{route('admin.brands.index')}}">{{ trans('sidebar_trans.All_Brands') }}</a> </li>
                             @endcan
                         </ul>
                     </li> --}}
@@ -532,8 +540,8 @@
                             <div class="clearfix"></div>
                         </a>
                         <ul id="stores-menu" class="collapse" data-parent="#sidebarnav">
-                            <li> <a href="{{Route('admin.stores.create')}}">{{ trans('sidebar_trans.Add_Store') }} </a> </li>
-                            <li> <a href="{{Route('admin.stores.index')}}">{{ trans('sidebar_trans.All_Stores') }} </a> </li>
+                            <li> <a href="{{route('admin.stores.create')}}">{{ trans('sidebar_trans.Add_Store') }} </a> </li>
+                            <li> <a href="{{route('admin.stores.index')}}">{{ trans('sidebar_trans.All_Stores') }} </a> </li>
                         </ul>
                     </li> --}}
 
@@ -547,8 +555,8 @@
                             <div class="clearfix"></div>
                         </a>
                         <ul id="vendors-menu" class="collapse" data-parent="#sidebarnav">
-                            <li> <a href="{{Route('admin.vendors.create')}}">{{ trans('sidebar_trans.Add_Vendor') }} </a> </li>
-                            <li> <a href="{{Route('admin.vendors.index')}}">{{ trans('sidebar_trans.All_Vendors') }} </a> </li>
+                            <li> <a href="{{route('admin.vendors.create')}}">{{ trans('sidebar_trans.Add_Vendor') }} </a> </li>
+                            <li> <a href="{{route('admin.vendors.index')}}">{{ trans('sidebar_trans.All_Vendors') }} </a> </li>
                         </ul>
                     </li>
                      --}}
@@ -563,9 +571,9 @@
                             <div class="clearfix"></div>
                         </a>
                         <ul id="categories-menu" class="collapse" data-parent="#sidebarnav">
-                            <li> <a href="{{Route('admin.categories.create')}}">{{ trans('sidebar_trans.Add_Category') }} </a> </li>
-                            <li> <a href="{{Route('admin.categories.index')}}">{{ trans('sidebar_trans.All_Categories') }}</a> </li>
-                            <li> <a href="{{Route('admin.categories.trash')}}">{{ trans('sidebar_trans.Trash_Categories') }}</a> </li>
+                            <li> <a href="{{route('admin.categories.create')}}">{{ trans('sidebar_trans.Add_Category') }} </a> </li>
+                            <li> <a href="{{route('admin.categories.index')}}">{{ trans('sidebar_trans.All_Categories') }}</a> </li>
+                            <li> <a href="{{route('admin.categories.trash')}}">{{ trans('sidebar_trans.Trash_Categories') }}</a> </li>
 
                         </ul>
                     </li> --}}
@@ -580,9 +588,9 @@
                             <div class="clearfix"></div>
                         </a>
                         <ul id="products-menu" class="collapse" data-parent="#sidebarnav">
-                            <li> <a href="{{Route('admin.products.create')}}">{{ trans('sidebar_trans.Add_Product') }} </a> </li>
-                            <li> <a href="{{Route('admin.products.index')}}">{{ trans('sidebar_trans.All_Products') }}</a> </li>
-                            
+                            <li> <a href="{{route('admin.products.create')}}">{{ trans('sidebar_trans.Add_Product') }} </a> </li>
+                            <li> <a href="{{route('admin.products.index')}}">{{ trans('sidebar_trans.All_Products') }}</a> </li>
+
                         </ul>
                     </li> --}}
 
@@ -596,9 +604,9 @@
                             <div class="clearfix"></div>
                         </a>
                         <ul id="attributes-menu" class="collapse" data-parent="#sidebarnav">
-                            <li> <a href="{{Route('admin.attributes.create')}}">{{ trans('sidebar_trans.Add_Attribute') }} </a> </li>
-                            <li> <a href="{{Route('admin.attributes.index')}}">{{ trans('sidebar_trans.All_Attributes') }}</a> </li>
-                            
+                            <li> <a href="{{route('admin.attributes.create')}}">{{ trans('sidebar_trans.Add_Attribute') }} </a> </li>
+                            <li> <a href="{{route('admin.attributes.index')}}">{{ trans('sidebar_trans.All_Attributes') }}</a> </li>
+
                         </ul>
                     </li> --}}
 
@@ -612,9 +620,9 @@
                             <div class="clearfix"></div>
                         </a>
                         <ul id="attribute_values-menu" class="collapse" data-parent="#sidebarnav">
-                            <li> <a href="{{Route('admin.attribute_values.create')}}">{{ trans('sidebar_trans.Add_Attribute_Value') }} </a> </li>
-                            <li> <a href="{{Route('admin.attribute_values.index')}}">{{ trans('sidebar_trans.All_Attribute_Values') }}</a> </li>
-                            
+                            <li> <a href="{{route('admin.attribute_values.create')}}">{{ trans('sidebar_trans.Add_Attribute_Value') }} </a> </li>
+                            <li> <a href="{{route('admin.attribute_values.index')}}">{{ trans('sidebar_trans.All_Attribute_Values') }}</a> </li>
+
                         </ul>
                     </li> --}}
 
@@ -627,9 +635,9 @@
                             <div class="clearfix"></div>
                         </a>
                         <ul id="coupons-menu" class="collapse" data-parent="#sidebarnav">
-                            <li> <a href="{{Route('admin.coupons.create')}}">{{ trans('sidebar_trans.Add_Coupon') }} </a> </li>
-                            <li> <a href="{{Route('admin.coupons.index')}}">{{ trans('sidebar_trans.All_Coupons') }}</a> </li>
-                            
+                            <li> <a href="{{route('admin.coupons.create')}}">{{ trans('sidebar_trans.Add_Coupon') }} </a> </li>
+                            <li> <a href="{{route('admin.coupons.index')}}">{{ trans('sidebar_trans.All_Coupons') }}</a> </li>
+
                         </ul>
                     </li> --}}
 
@@ -644,7 +652,7 @@
                         </a>
                         <ul id="orders-menu" class="collapse" data-parent="#sidebarnav">
                             <li> <a
-                                    href="{{ Route('admin.orders.index') }}">{{ trans('sidebar_trans.All_Orders') }}</a>
+                                    href="{{ route('admin.orders.index') }}">{{ trans('sidebar_trans.All_Orders') }}</a>
                             </li>
                         </ul>
                     </li> --}}
@@ -659,10 +667,10 @@
                             <div class="clearfix"></div>
                         </a>
                         <ul id="roles-menu" class="collapse" data-parent="#sidebarnav">
-                            <li> <a href="{{ Route('admin.roles.create') }}">{{ trans('sidebar_trans.Add_Role') }}
+                            <li> <a href="{{ route('admin.roles.create') }}">{{ trans('sidebar_trans.Add_Role') }}
                                 </a> </li>
                             <li> <a
-                                    href="{{ Route('admin.roles.index') }}">{{ trans('sidebar_trans.All_Roles') }}</a>
+                                    href="{{ route('admin.roles.index') }}">{{ trans('sidebar_trans.All_Roles') }}</a>
                             </li>
                         </ul>
                     </li> --}}
@@ -679,10 +687,10 @@
                             <div class="clearfix"></div>
                         </a>
                         <ul id="admins-menu" class="collapse" data-parent="#sidebarnav">
-                            <li> <a href="{{ Route('admin.admins.create') }}">{{ trans('sidebar_trans.Add_Admin') }}
+                            <li> <a href="{{ route('admin.admins.create') }}">{{ trans('sidebar_trans.Add_Admin') }}
                                 </a> </li>
                             <li> <a
-                                    href="{{ Route('admin.admins.index') }}">{{ trans('sidebar_trans.All_Admins') }}</a>
+                                    href="{{ route('admin.admins.index') }}">{{ trans('sidebar_trans.All_Admins') }}</a>
                             </li>
                         </ul>
                     </li> --}}
@@ -697,7 +705,7 @@
                             <div class="clearfix"></div>
                         </a>
                         <ul id="users-menu" class="collapse" data-parent="#sidebarnav">
-                            <li> <a href="{{ Route('admin.profile.edit') }}">{{ trans('sidebar_trans.Edit_Profile') }}
+                            <li> <a href="{{ route('admin.profile.edit') }}">{{ trans('sidebar_trans.Edit_Profile') }}
                                 </a> </li>
                             <li> <a href="">{{ trans('sidebar_trans.All_User') }}</a> </li>
                         </ul>

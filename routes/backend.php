@@ -24,8 +24,10 @@ use  App\Http\Controllers\Backend\Admin\{
     WebsitePartsController,
     DeliveryController,
     PaymentGatewayController,
+    ProductNameController,
     ProductPropertiesController,
-    ReportsController
+    ReportsController,
+    ProductSuggestController
 };
 
 use  App\Http\Controllers\Backend\Vendor\{
@@ -37,9 +39,8 @@ use  App\Http\Controllers\Backend\Vendor\{
     AttributeValuesController as VendorAttributeValuesController,
     NotificationsController as VendorNotificationsController ,
     OrderController as VendorOrderController,
-    CouponController as VendorCouponController
-
-
+    CouponController as VendorCouponController,
+    ProductSuggestController as VendorProductSuggestController,
 };
 
 use  App\Http\Controllers\Backend\Delivery\{
@@ -48,7 +49,8 @@ use  App\Http\Controllers\Backend\Delivery\{
     OrdersController as DeliveryOrdersController,
     ReportsController as DeliveryReportsController,
 };
-
+use App\Http\Controllers\CategoryImportController;
+use App\Http\Controllers\ProductNameImportController;
 use Illuminate\Support\Facades\Route;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
@@ -68,19 +70,19 @@ Route::group(
 
 
 
-        Route::get('/notifications_config', [ConfigNotificationsController::class, 'index'])->name('config.notifications');
-        Route::post('/updatePusherSettings', [ConfigNotificationsController::class, 'updatePusherSettings'])
-        ->name('config.updatePusherSettings');
+        // Route::get('/notifications_config', [ConfigNotificationsController::class, 'index'])->name('config.notifications');
+        // Route::post('/updatePusherSettings', [ConfigNotificationsController::class, 'updatePusherSettings'])
+        // ->name('config.updatePusherSettings');
 
-        Route::get('/sms_config', [ConfigSMSController::class, 'index'])->name('config.sms');
-        Route::post('/updateUltraMessageSettings', [ConfigSMSController::class, 'updateUltraMessageSettings'])
-        ->name('config.updateUltraMessageSettings');
+        // Route::get('/sms_config', [ConfigSMSController::class, 'index'])->name('config.sms');
+        // Route::post('/updateUltraMessageSettings', [ConfigSMSController::class, 'updateUltraMessageSettings'])
+        // ->name('config.updateUltraMessageSettings');
 
 
 
-        Route::get('/payment_config', [ConfigPaymentsController::class, 'paymentConfig'])->name('config.payment');
-        Route::post('/updatePaymobSettings', [ConfigPaymentsController::class, 'updatePaymobSettings'])
-        ->name('config.updatePaymobSettings');
+        // Route::get('/payment_config', [ConfigPaymentsController::class, 'paymentConfig'])->name('config.payment');
+        // Route::post('/updatePaymobSettings', [ConfigPaymentsController::class, 'updatePaymobSettings'])
+        // ->name('config.updatePaymobSettings');
 
 
         Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
@@ -90,9 +92,13 @@ Route::group(
         });
 
         Route::resource('/categories', CategoriesController::class);
+        // Route::get('/categories', [CategoriesController::class, 'index'])->name('categories.index');
+        Route::get('/categories/data', [CategoriesController::class, 'getCategories'])->name('categories.data');
+
         Route::get('/trash', [CategoriesController::class, 'trash'])->name('categories.trash');
         Route::put('/restore/{category_id}', [CategoriesController::class, 'restore'])->name('categories.restore');
         Route::delete('/force_delete/{category_id}', [CategoriesController::class, 'forceDelete'])->name('categories.forceDelete');
+        // Route::post('import-categories', [CategoryImportController::class, 'import'])->name('categories.import');
 
         Route::resource('/banners', BannerController::class);
 
@@ -103,6 +109,8 @@ Route::group(
         Route::put('/updateStoreStatus/{store_id}', [StoresController::class, 'updateStoreStatus'])->name('stores.updateStoreStatus');
 
 
+        Route::get('/admin/products/autocomplete', [ProductsController::class, 'autocomplete'])->name('products.autocomplete');
+
 
         Route::resource('/destinations', DestinationController::class);
 
@@ -111,10 +119,16 @@ Route::group(
 
 
         Route::resource('/products', ProductsController::class);
+        Route::resource('/productSuggest', ProductSuggestController::class);
+        Route::resource('/productName', ProductNameController::class);
+        Route::get('/productName/get_data', [ProductNameController::class,'getData'])->name('productName.getData');
+
+        Route::post('import-products-name', [ProductNameImportController::class, 'import'])->name('productName.import');
+
         Route::get('/add_variant/{product_id}', [ProductsController::class, 'add_variant'])->name('products.add_variant');
 
         Route::resource('/product_variants', ProductVariantsController::class);
-        Route::get('/create_variant/{product_id}', [ProductVariantsController::class, 'create'])->name('product_variants.create');
+        Route::get('/create_variant/{product_id}', [ProductVariantsController::class, 'create'])->name('admin_product_variants.create');
         Route::get('/get_attribute_value/{attribute_id}', [ProductVariantsController::class, 'get_attribute_value'])->name('get_attribute_value');
 
         Route::resource('/attributes', AttributesController::class);
@@ -143,13 +157,13 @@ Route::group(
 
         Route::get('/orders_report/{status?}', [ReportsController::class,'index'])->name('reports.orders');
 
-        Route::get('paymentGateways', [PaymentGatewayController::class,'index'])->name('paymentGateways.index');
-        Route::get('paymentGateways/create', [PaymentGatewayController::class,'create'])->name('paymentGateways.create');
-        Route::post('paymentGateways/store', [PaymentGatewayController::class,'store'])->name('paymentGateways.store');
+        // Route::get('paymentGateways', [PaymentGatewayController::class,'index'])->name('paymentGateways.index');
+        // Route::get('paymentGateways/create', [PaymentGatewayController::class,'create'])->name('paymentGateways.create');
+        // Route::post('paymentGateways/store', [PaymentGatewayController::class,'store'])->name('paymentGateways.store');
 
-        Route::get('paymentGateways/edit/{id}', [PaymentGatewayController::class,'edit'])->name('paymentGateways.edit');
-        Route::put('paymentGateways/update/{id}', [PaymentGatewayController::class,'update'])->name('paymentGateways.update');
-        Route::delete('paymentGateways/delete/{id}', [PaymentGatewayController::class,'delete'])->name('paymentGateways.destroy');
+        // Route::get('paymentGateways/edit/{id}', [PaymentGatewayController::class,'edit'])->name('paymentGateways.edit');
+        // Route::put('paymentGateways/update/{id}', [PaymentGatewayController::class,'update'])->name('paymentGateways.update');
+        // Route::delete('paymentGateways/delete/{id}', [PaymentGatewayController::class,'delete'])->name('paymentGateways.destroy');
 
     }
 );
@@ -174,6 +188,10 @@ Route::group([
 
       Route::resource('/products', VendorProductsController::class);
 
+      Route::resource('/vendorProductSuggest', VendorProductSuggestController::class);
+
+      Route::get('/vendorProducts/autocomplete', [VendorProductsController::class, 'autocomplete'])->name('vendorProducts.autocomplete');
+
       Route::get('/edit_products_price', [VendorProductsController::class,'edit_products_price'])->name('products.edit_products_price');
 
       Route::put('/update_products_price', [VendorProductsController::class,'updateProductsPrice'])->name('products.update_products_price');
@@ -183,12 +201,12 @@ Route::group([
       // Route::resource('/product_variants', VendorProductVariantsController::class);
 
       Route::get('/product_variant', [VendorProductVariantsController::class, 'index'])->name('product_variants.index');
-      Route::get('/create_product_variant/{product_id}', [VendorProductVariantsController::class, 'create'])->name('product_variants.create');
+      Route::get('/create_product_variant/{product_id}', [VendorProductVariantsController::class, 'create'])->name('vendor_product_variants.create');
       Route::post('/store_product_variant', [VendorProductVariantsController::class, 'store'])->name('product_variants.store');
 
       Route::get('/edit_product_variant/{product_id}', [VendorProductVariantsController::class, 'edit'])->name('product_variants.edit');
       Route::delete('/delete_product_variant/{variant_id}', [VendorProductVariantsController::class, 'destroy'])->name('product_variants.delete');
-      
+
 	Route::put('/update_product_variant/{product_id}', [VendorProductVariantsController::class, 'update'])->name('product_variants.update');
 
       Route::get('/show_product_variant/{product_id}', [VendorProductVariantsController::class, 'show'])->name('product_variants.show');
@@ -196,7 +214,6 @@ Route::group([
       Route::get('/delete_product_variant/{product_id}', [VendorProductVariantsController::class, 'destroy'])->name('product_variants.destroy');
 
       // notes
-      // Route::get('/create_product_variant/{product_id}', [VendorProductVariantsController::class, 'create'])->name('vendor.product_variants.create');
 
       Route::get('/get_attribute_value/{attribute_id}', [VendorProductVariantsController::class, 'get_attribute_value'])->name('get_attribute_value');
 

@@ -1,10 +1,25 @@
 @extends('backend.layouts.master')
-@section('css')
-    <link href="{{ URL::asset('backend/assets/tagify/tagify.css') }}" rel="stylesheet">
+@push('style')
+    <link href="{{ asset('backend/assets/tagify/tagify.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <style>
+        .ui-autocomplete {
+                    z-index: 1100;
+                    margin-right: 200px;
+                    width: 30%;}
 
+        .product-suggestion {
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                    padding: 5px;
+                    border-bottom: 1px solid #ccc;
+          }
+
+    </style>
+@endpush
 @section('title')
     {{ trans('products_trans.Create_Product') }}
-@stop
 @endsection
 @section('page-header')
 <!-- breadcrumb -->
@@ -45,8 +60,13 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <x-backend.form.input label="{{ trans('products_trans.Name') }}" name="name"
-                                    class="form-control" />
+                                <!-- <x-backend.form.input label="{{ trans('products_trans.Name') }}" name="name"
+                                    class="form-control" /> -->
+                                    <!-- <x-backend.form.input label="{{ trans('products_trans.Name') }}" name="name" id="productName" class="form-control" /> -->
+                                    <label for="">{{ trans('products_trans.Name') }}</label>
+                                    <input autofocus class="form-control" type="text"
+                                                                      id="productName"
+                                                                      style="direction: rtl ; text-align:right">
                             </div>
                         </div>
 
@@ -297,7 +317,7 @@
 <!-- row closed -->
 @endsection
 @push('scripts')
-{{-- Tagify --}}
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script src="{{ asset('backend/assets/tagify/tagify.js') }}"></script>
 <script src="{{ asset('backend/assets/tagify/tagify.polyfills.min.js') }}"></script>
 
@@ -316,18 +336,14 @@
             ['view', ['codeview', 'help']]
         ]
     });
-</script>
-<script>
+
     function preview() {
         frame.src = URL.createObjectURL(event.target.files[0]);
     }
 
     var inputElm = document.querySelector('[name=tags]'),
         tagify = new Tagify(inputElm);
-</script>
 
-{{-- Color enable & disabled --}}
-<script>
     $('input[name="colors_active"]').on('change', function() {
         if ($('input[name="colors_active"]').is(':checked')) {
             $('#colors-selector').prop('disabled', false);
@@ -337,5 +353,60 @@
             $('#sku_combination').hide();
         }
     });
-</script>
+    // $(document).ready(function() {
+    //         $('#product-name').autocomplete({
+    //             source: function(request, response) {
+    //                 $.ajax({
+    //                     url: '{{ route("admin.products.autocomplete") }}',
+    //                     data: {
+    //                         query: request.term
+    //                     },
+    //                     success: function(data) {
+    //                         response(data);
+    //                     }
+    //                 });
+    //             },
+    //             minLength: 2, // Minimum characters to trigger autocomplete
+    //             select: function(event, ui) {
+    //                 $('#product-name').val(ui.item.value);
+    //             }
+    //         });
+    //     });
+
+        $(function() {
+            $("#productName").autocomplete({
+                source: function(request, response) {
+                    $.ajax({
+                        url: "{{ route('admin.products.autocomplete') }}",
+                        dataType: "json",
+                        data: {
+                            term: request.term
+                        },
+                        success: function(data) {
+                            var mappedData = $.map(data, function(item) {
+                                var suggestionHtml = '<div class="product-suggestion">' +
+                                    '<div>' + item.name + '</div>' +
+                                    '</div>';
+                                return {
+                                    label: item.name,
+                                    value: item.name,
+                                    html: suggestionHtml,
+                                    slug: item.slug
+                                };
+                            });
+                            response(mappedData);
+                        }
+                    });
+                },
+                minLength: 3,
+                select: function(event, ui) {
+                    $("#productName").val(ui.item.label);
+                    // Optionally, handle selection (e.g., redirect to the product page)
+                    return false;
+                }
+            }).data("ui-autocomplete")._renderItem = function(ul, item) {
+                return $("<li>").append(item.html).appendTo(ul);
+            };
+        });
+    </script>
 @endpush

@@ -18,7 +18,7 @@
                     </div>
                     {{-- <div class="col-lg-6 col-md-6 col-12">
                         <ul class="breadcrumb-nav">
-                            <li><a href="{{ Route('home') }}"><i class="lni lni-home"></i> Home</a></li>
+                            <li><a href="{{ route('home') }}"><i class="lni lni-home"></i> Home</a></li>
                             <li><a href="">Shop</a></li>
                             <li>Shop Grid</li>
                         </ul>
@@ -63,41 +63,26 @@
 
                             @if (isset($categories))
                                 <div class="checkout-steps-form-style-1">
+                                    <h2>Categories</h2>
                                     <ul id="accordionExample">
 
                                         @foreach ($categories as $category)
-                                            @if ($category->parent_id === null)
                                                 <li>
-                                                    <h6 class="title collapsed" data-bs-toggle="collapse"
+                                                    <a href="{{ route('shop_grid.index', $category->id) }}">
+                                                        <h6>{{ $category->name }}</h6>
+                                                    </a>
+                                                    <!-- <h6 class="title collapsed" data-bs-toggle="collapse"
                                                         data-bs-target="#x{{ $category->id }}" aria-expanded="false"
                                                         aria-controls="x{{ $category->id }}">
                                                         {{ $category->name }}
                                                     </h6>
                                                     <section class="checkout-steps-form-content collapse"
-                                                        id="x{{ $category->id }}" aria-labelledby="x{{ $category->id }}"
+                                                        id="{{ $category->id }}" aria-labelledby="x{{ $category->id }}"
                                                         data-bs-parent="#accordionExample">
                                                         <div class="row">
-
-                                                            @if ($category->children->count() > 0)
-                                                                <ul class="list" style="margin-left: 10px;">
-                                                                    @foreach ($category->children as $child)
-                                                                        <li class="m-0">
-                                                                            <input type="checkbox"
-                                                                                value="{{ $child->id }}"
-                                                                                name="category[]" class="category"
-                                                                                @checked($category_id == $child->id)>
-                                                                            <label>{{ $child->name }}
-                                                                                ({{ $child->products()->count() }})
-                                                                            </label>
-                                                                        </li>
-                                                                    @endforeach
-                                                                </ul>
-                                                            @endif
-
                                                         </div>
-                                                    </section>
+                                                    </section> -->
                                                 </li>
-                                            @endif
                                         @endforeach
 
 
@@ -223,7 +208,7 @@
                                                         <div class="product-image">
 
                                                             <a
-                                                                href="{{ Route('products.show_product', [$product->id, $product->slug]) }}">
+                                                                href="{{ route('products.show_product', [$product->id, $product->slug]) }}">
                                                                 <img src="{{ $product->image_url }}" alt="#">
                                                             </a>
 
@@ -231,15 +216,15 @@
                                                         <div class="product-info">
                                                             <h4 class="title">
                                                                 <a
-                                                                    href="{{ Route('products.show_product', [$product->id, $product->slug]) }}">{{ $product->name }}</a>
+                                                                    href="{{ route('products.show_product', [$product->id, $product->slug]) }}">{{ $product->name }}</a>
                                                             </h4>
                                                             <span class="category">
                                                                 <a
-                                                                    href="{{ Route('shop_grid.index', $product->category->id) }}">
+                                                                    href="{{ route('shop_grid.index', $product->category->id) }}">
                                                                     {{ $product->category->name }} </a>
                                                                 من :
                                                                 <a
-                                                                    href="{{ Route('shop_grid.indexStore', $product->store->id) }}">
+                                                                    href="{{ route('shop_grid.indexStore', $product->store->id) }}">
                                                                     {{ $product->store->name }}
                                                                 </a>
                                                             </span>
@@ -411,23 +396,23 @@
                                     }
                                     productHtml +=
                                         '<div class="product-image">' +
-                                        '<a href="' + getProductRoute(product.id, product.slug) +
+                                        '<a href="' + getProductroute(product.id, product.slug) +
                                         '">' +
                                         '<img src="' + product.image_url + '" alt="#">' +
                                         '</a>' +
                                         '</div>' +
                                         '<div class="product-info">' +
                                         '<h4 class="title">' +
-                                        '<a href="' + getProductRoute(product.id, product.slug) +
+                                        '<a href="' + getProductroute(product.id, product.slug) +
                                         '">' + product.name +
                                         '</a>' +
                                         '</h4>' +
                                         '<span class="category">' +
-                                        '<a href="' + getCategoryRoute(product.category_id) + '">' +
+                                        '<a href="' + getCategoryroute(product.category_id) + '">' +
                                         (product.category ? product.category.name : '') +
                                         '</a>' +
                                         ' من:' +
-                                        '<a href="' + getStoreRoute(product.store_id) + '">' +
+                                        '<a href="' + getStoreroute(product.store_id) + '">' +
                                         (product.store ? product.store.name : '') +
                                         '</a>' +
                                         '</span>' +
@@ -451,17 +436,17 @@
                                     html += productHtml;
                                 }
 
-                                function getProductRoute(id, slug) {
+                                function getProductroute(id, slug) {
                                     return "{{ route('products.show_product', ['id' => ':id', 'slug' => ':slug']) }}"
                                         .replace(':id', id).replace(':slug', slug)
                                 }
 
-                                function getCategoryRoute(categoryId) {
+                                function getCategoryroute(categoryId) {
                                     return "{{ route('shop_grid.index', ['categoryId' => ':categoryId']) }}"
                                         .replace(':categoryId', categoryId);
                                 }
 
-                                function getStoreRoute(storeId) {
+                                function getStoreroute(storeId) {
                                     return "{{ route('shop_grid.indexStore', ['storeId' => ':storeId']) }}"
                                         .replace(':storeId', storeId);
                                 }
@@ -512,17 +497,17 @@
                             sort: sort
                         },
                         success: function(response) {
-                            function getProductRoute(id, slug) {
+                            function getProductroute(id, slug) {
                                     return "{{ route('products.show_product', ['id' => ':id', 'slug' => ':slug']) }}"
                                         .replace(':id', id).replace(':slug', slug)
                                 }
 
-                                function getCategoryRoute(categoryId) {
+                                function getCategoryroute(categoryId) {
                                     return "{{ route('shop_grid.index', ['categoryId' => ':categoryId']) }}"
                                         .replace(':categoryId', categoryId);
                                 }
 
-                                function getStoreRoute(storeId) {
+                                function getStoreroute(storeId) {
                                     return "{{ route('shop_grid.indexStore', ['storeId' => ':storeId']) }}"
                                         .replace(':storeId', storeId);
                                 }
@@ -546,22 +531,22 @@
                                 }
                                 productHtml +=
                                     '<div class="product-image">' +
-                                    '<a href="' + getProductRoute(product.id, product.slug) + '">' +
+                                    '<a href="' + getProductroute(product.id, product.slug) + '">' +
                                     '<img src="' + product.image_url + '" alt="#">' +
                                     '</a>' +
                                     '</div>' +
                                     '<div class="product-info">' +
                                     '<h4 class="title">' +
-                                    '<a href="' + getProductRoute(product.id, product.slug) + '">' + product
+                                    '<a href="' + getProductroute(product.id, product.slug) + '">' + product
                                     .name +
                                     '</a>' +
                                     '</h4>' +
                                     '<span class="category">' +
-                                    '<a href="' + getCategoryRoute(product.category_id) + '">' +
+                                    '<a href="' + getCategoryroute(product.category_id) + '">' +
                                         (product.category ? product.category.name : '') +
                                     '</a>' +
                                     ' من:' +
-                                    '<a href="' + getStoreRoute(product.store_id) + '">' +
+                                    '<a href="' + getStoreroute(product.store_id) + '">' +
                                         (product.store ? product.store.name : '') +
                                     '</a>' +
                                     '</span>' +
@@ -586,7 +571,7 @@
                                 html += productHtml;
                             }
 
-                            function getProductRoute(id, slug) {
+                            function getProductroute(id, slug) {
                                 return "{{ route('products.show_product', ['id' => ':id', 'slug' => ':slug']) }}"
                                     .replace(':id', id).replace(':slug', slug)
                             }
