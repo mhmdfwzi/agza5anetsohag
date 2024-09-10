@@ -27,10 +27,10 @@
                                                              <!-- Single Widget -->
                                                              <div class="single-footer f-contact">
                                                                        <h3>ابق على تواصل معنا</h3>
-                                                                       <p class="phone">Phone: 01555361715</p>
+                                                                       <p class="phone">Phone: 0111144809</p>
                                                                        <p class="mail">
                                                                                  <a
-                                                                                           href="mailto:support@aliafandy.com">support@aliafandy.com</a>
+                                                                                           href="mailto:agza5anetsohag@gmail.com">agza5anetsohag@gmail.com</a>
                                                                        </p>
                                                              </div>
                                                              <!-- End Single Widget -->
@@ -42,7 +42,7 @@
                                                                        <ul class="app-btn">
                                                                                  <li>
                                                                                            <a
-                                                                                                     href="https://play.google.com/store/apps/details?id=com.aliafandy&pcampaignid=web_share">
+                                                                                                     href="#">
                                                                                                      <i
                                                                                                                class="lni lni-play-store"></i>
                                                                                                      <span
@@ -110,9 +110,8 @@
                                          </div>
                                          <div class="col-lg-4 col-12">
                                                    <div class="copyright">
-                                                             <p>Designed and Developed by<a
-                                                                                 href="https://aliafandy.com/"
-                                                                                 rel="nofollow">Aliafandy</a>
+                                                             <p>All Rights Reserved @ Agza5anetsoahg.com
+                                                                                  
                                                              </p>
                                                    </div>
                                          </div>
@@ -121,18 +120,19 @@
                                                              <li>
                                                                        <span>تابعنا على :</span>
                                                              </li>
-                                                             <li><a href="https://www.facebook.com/profile.php?id=100092454938621"><i
-                                                                                           class="lni lni-facebook-filled"></i></a>
-                                                             </li>
-                                                             <li><a href="javascript:void(0)"><i
-                                                                                           class="lni lni-twitter-original"></i></a>
-                                                             </li>
-                                                             <li><a href="javascript:void(0)"><i
-                                                                                           class="lni lni-instagram"></i></a>
-                                                             </li>
-                                                             <li><a href="javascript:void(0)"><i
-                                                                                           class="lni lni-google"></i></a>
-                                                             </li>
+                                                             <li>
+                                                            <a
+                                                                      href="https://www.facebook.com/profile.php?id=61563651266449"><i
+                                                                                class="lni lni-facebook-filled"></i></a>
+                                                  </li>
+                                                  <li>
+                                                            <a href="https://www.youtube.com/@agza5anetsohag"><i
+                                                                                class="lni lni-youtube"></i></a>
+                                                  </li>
+                                                  <li>
+                                                            <a href="https://www.instagram.com/"><i
+                                                                                class="lni lni-instagram-filled"></i></a>
+                                                  </li>
                                                    </ul>
                                          </div>
                                </div>

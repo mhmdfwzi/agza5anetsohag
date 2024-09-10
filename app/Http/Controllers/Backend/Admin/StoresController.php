@@ -45,7 +45,7 @@ class StoresController extends Controller
     {
         //
         $destinations = Destination::all();
-        $categories = Category::where('parent_id', '!=', 'null')->orderby('parent_id', 'asc')->get();
+        $categories = Category::all();
         return view('backend.Admin_Dashboard.stores.create', compact('categories', 'destinations'));
     }
 

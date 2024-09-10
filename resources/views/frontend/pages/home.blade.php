@@ -10,16 +10,45 @@
                                                   <div class="slider-head">
                                                             <!-- Start Hero Slider -->
                                                             <div class="hero-slider">
+                                                           
                                                                       <!-- Start Single Slider -->
-                                                                      @foreach ($main_categories as $main_category)
-                                                                      <div class="single-slider">
-                                                                                <h5 class="category-name">
-                                                                                          <a
-                                                                                                    href="{{ route('shop_grid.index', $main_category->id) }}">
-                                                                                                    {{ $main_category->name }}
-                                                                                          </a>
-                                                                                </h5>
+                                                                      @foreach ($offers as $offer)
+                                                                      
+                                                                      <div class="single-slider" style="padding-right:13px; ">
+                                                                        
+                                                                      <div class="content">
+                                                                        <div class='img' align='center'>
+                                                                            <br>
+                                                                        <img src="storage/{{$offer->image }}" class='im' alt="">
+
+
+                                                                        </div>
+                                                                        <div class="info">   
+                                                                             <h1><a href="{{ Route('products.show_product',  [$offer->id, $offer->slug])  }}">{{ $offer->name }} </a>
+    </h1>
+     
+    <span>صلاحيه حتي : {{ $offer->ex_date }}</span>
+    <br>
+    <span  >
+        <a href="{{ route('shop_grid.index', ['categoryId' => $offer->category->id]) }}">
+            {{ $offer->category->name }}
+            <br>
+        </a> من :
+
+        <a href="{{ route('shop_grid.indexStore', ['storeId' => $offer->store->id]) }}">
+            {{ $offer->store->name }}
+        </a></span>
+                                                                    
+                                                                    
+                                                                    </div>
+                                                                        
+                                                                        </h5>
+                                                                        </div>
+                                            
+                                                                   
+                                                                     
                                                                       </div>
+                                                                      
                                                                       @endforeach
                                                                       <!-- End Single Slider -->
                                                             </div>
@@ -134,7 +163,7 @@
           tns({
                     container: '.hero-slider',
                     slideBy: 'page',
-                    autoplay: false,
+                    autoplay: true,
                     autoplayButtonOutput: false,
                     mouseDrag: true,
                     gutter: 8,

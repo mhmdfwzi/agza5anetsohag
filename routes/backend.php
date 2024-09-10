@@ -129,6 +129,7 @@ Route::group(
 
         Route::resource('/product_variants', ProductVariantsController::class);
         Route::get('/create_variant/{product_id}', [ProductVariantsController::class, 'create'])->name('admin_product_variants.create');
+        Route::get('/create_variant/{product_id}', [ProductVariantsController::class, 'create'])->name('vendor_product_variants.create');
         Route::get('/get_attribute_value/{attribute_id}', [ProductVariantsController::class, 'get_attribute_value'])->name('get_attribute_value');
 
         Route::resource('/attributes', AttributesController::class);

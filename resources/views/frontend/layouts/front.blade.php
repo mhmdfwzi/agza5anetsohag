@@ -17,7 +17,7 @@
           <link rel="stylesheet" href="{{ asset('frontend/assets/css/glightbox.min.css') }}" />
           <link rel="stylesheet" href="{{ asset('frontend/assets/css/style.css') }}" />
           <link rel="stylesheet" type="text/css"
-                    href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/4.6.3/css/ionicons.min.css">
+          href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/4.6.3/css/ionicons.min.css">
 
 
 
@@ -139,7 +139,7 @@
                                                             <div class="menu-mobile-header">
                                                                       <button type="button" class="menu-mobile-arrow"><i
                                                                                           class="ion ion-ios-arrow-back"></i></button>
-                                                                      <div class="menu-mobile-title">aliafandy</div>
+                                                                      <div class="menu-mobile-title">Agzakhanet-sohag</div>
                                                                       <button type="button" class="menu-mobile-close"><i
                                                                                           class="ion ion-ios-close"></i></button>
                                                             </div>
@@ -228,52 +228,13 @@
                                                                       </li>
                                                                       @endforeach
 
-                                                                      <li class="menu-item-has-children category_menu ">
-                                                                                <a href="#">التصنيفات <i
-                                                                                                    class="ion ion-ios-arrow-down"></i></a>
-                                                                                <div class="menu-subs menu-mega menu-column-4"
-                                                                                          style="direction: rtl">
-
-                                                                                          @foreach ($main_categories as $main_category)
-
-                                                                                          <div class="list-item">
-                                                                                                    <h4 class="title">
-                                                                                                    <a
-                                                                                                    href="{{ route('shop_grid.index', $main_category->id) }}">
-                                                                                                              {{ $main_category->name }}
-                                                                                                    </a>
-                                                                                                    </h4>
-
-                                                                                    </div>
-                                                                                    @endforeach
-                                                                        </div>
-                                                                        </li>
+                           
 
 
 
 
 
-                              <li class="menu-item-has-children contacts  category_menu">
-                                        <a href="#">تواصل معنا <i class="ion ion-ios-arrow-down"></i></a>
-                                        <div class="menu-subs menu-column-1">
-                                                  <ul>
-                                                            <li>
-                                                                      <a
-                                                                                href="https://www.facebook.com/profile.php?id=100092454938621"><i
-                                                                                          class="lni lni-facebook-filled"></i></a>
-                                                                      <a href="#"><i class="lni lni-youtube"></i></a>
-                                                                      <a href="#"><i
-                                                                                          class="lni lni-instagram-filled"></i></a>
-
-                                                            </li>
-
-                                                            <li> <i class="mdi mdi-phone-in-talk"></i>
-                                                                      01555361715
-                                                            </li>
-
-                                                  </ul>
-                                        </div>
-                              </li>
+                    
 
                               </ul>
                               </nav>
@@ -281,15 +242,15 @@
                                         <ul>
                                                   <li>
                                                             <a
-                                                                      href="https://www.facebook.com/profile.php?id=100092454938621"><i
+                                                                      href="https://www.facebook.com/profile.php?id=61563651266449"><i
                                                                                 class="lni lni-facebook-filled"></i></a>
                                                   </li>
                                                   <li>
-                                                            <a href="javascript:void(0)"><i
+                                                            <a href="https://www.youtube.com/@agza5anetsohag"><i
                                                                                 class="lni lni-youtube"></i></a>
                                                   </li>
                                                   <li>
-                                                            <a href="javascript:void(0)"><i
+                                                            <a href="https://www.instagram.com/"><i
                                                                                 class="lni lni-instagram-filled"></i></a>
                                                   </li>
                                                   <li>

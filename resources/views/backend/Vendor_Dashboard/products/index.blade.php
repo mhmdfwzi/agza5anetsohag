@@ -78,7 +78,7 @@
                                     </a>
                                 </td>
                                 <td>
-                                    <a href="{{route('vendor.product_variants.create',$product->id)}}" class="btn btn-primary btn-sm">
+                                    <a href="#" class="btn btn-primary btn-sm">
                                         {{ trans('products_trans.Add_Variant') }}
                                     </a>
                                 </td>
@@ -151,7 +151,7 @@
                             <i class="fa fa-eye"></i>
                         </a>
 
-                        <a href="{{route('vendor.product_variants.create',$product->id)}}" class="btn btn-primary btn-sm">
+                        <a href="#" class="btn btn-primary btn-sm">
                             الخصائص {{$product->product_variants_count}}
                         </a>
                     </td>

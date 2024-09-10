@@ -17,7 +17,7 @@
           }
 
     </style>
-@endpush
+@endpushvendor.productSuggest.create
 @section('title')
     {{ trans('products_trans.Create_Product') }}
 @endsection
@@ -68,14 +68,14 @@
                             <div class="form-group">
 		                        <!-- <x-backend.form.input label="اسم المنتج" name="name" required autofocus="autofocus" autofocus type="text" class="form-control" /> -->
                                 <label for="">{{ trans('products_trans.Name') }}</label>
-                                    <input autofocus class="form-control" type="text"
+                                    <input autofocus class="form-control" type="text" name="name" 
                                                                       id="productName"
                                                                       style="direction: rtl ; text-align:right">
                             </div>
                         </div>
 
                         <div class="col-md-6">
-                        <a href="{{route('vendor.productSuggest.create')}}" class="btn btn-primary btn-sm">
+                        <a href="#" class="btn btn-primary btn-sm">
                             {{ trans('products_trans.Product_Suggest') }}
                         </a>
                         </div>
@@ -157,11 +157,23 @@
 
                     </div>
 
+                    <div class="row">
+
+
+                        <div class="col-md-6" >
+                            <div class="form-group">
+                                <x-backend.form.input label="Expire Date"
+                                type="date"   name="ex_date" class="form-control" required/>
+                            </div>
+                        </div>
+
+
+                    </div>
 
                     <div class="row">
 
 
-                        <div class="col-md-6" style="display:none;">
+                        <div class="col-md-6" >
                             <div class="form-group">
                                 <x-backend.form.input label="{{ trans('products_trans.Quantity') }}"
                                 type="number" value="1" name="quantity" class="form-control" required/>

@@ -10,18 +10,19 @@
                                                   <div class="slider-head">
                                                             <!-- Start Hero Slider -->
                                                             <div class="hero-slider">
+                                                            <div class="content">
                                                                       <!-- Start Single Slider -->
-                                                                      @foreach ($main_categories as $main_category)
+                                                                      @foreach ($offers as $offer)
                                                                       <div class="single-slider">
                                                                                 <h5 class="category-name">
-                                                                                          <a
-                                                                                                    href="{{ route('shop_grid.index', $main_category->id) }}">
-                                                                                                    {{ $main_category->name }}
-                                                                                          </a>
+                                                                                           
+                                                                                                    {{ $offer->name }}
+                                                                                           
                                                                                 </h5>
                                                                       </div>
                                                                       @endforeach
                                                                       <!-- End Single Slider -->
+                                                            </div>
                                                             </div>
                                                             <!-- End Hero Slider -->
                                                   </div>

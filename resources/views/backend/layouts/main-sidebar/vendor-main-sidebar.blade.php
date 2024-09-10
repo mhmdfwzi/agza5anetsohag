@@ -35,7 +35,7 @@
                                     href="{{ Route('vendor.products.index') }}">{{ trans('sidebar_trans.All_Products') }}</a>
                             </li>
                             <li> <a
-                                    href="{{ Route('vendor.productSuggest.index') }}">{{ trans('sidebar_trans.All_Product_Suggest') }}</a>
+                                    href="#">{{ trans('sidebar_trans.All_Product_Suggest') }}</a>
                             </li>
                             <li>
                                 <a href="{{ Route('vendor.products.edit_products_price') }}">تعديل الاسعار</a>

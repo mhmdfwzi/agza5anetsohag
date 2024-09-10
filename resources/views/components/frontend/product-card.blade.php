@@ -18,6 +18,7 @@
 		        <h4 class="title">
             <a href="{{ Route('products.show_product',  [$product->id, $product->slug])  }}">{{ $product->name }} </a>
  </h4>
+ <span>صلاحيه حتي  : {{ $product->ex_date }}</span>
         <span class="category">     
             <a href="{{ route('shop_grid.index', ['categoryId' => $product->category->id]) }}">
             {{ $product->category->name }}
@@ -26,6 +27,7 @@
          <a href="{{ route('shop_grid.indexStore', ['storeId' => $product->store->id]) }}">
             {{ $product->store->name }}
         </a></span>
+        
          
 
 
