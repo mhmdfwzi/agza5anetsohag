@@ -2,7 +2,7 @@
 @section('css')
 
 @section('title')
-{{ trans('categories_trans.Edit_Category') }}
+    {{ trans('categories_trans.Edit_Category') }}
 @stop
 @endsection
 @section('page-header')
@@ -14,10 +14,9 @@
         </div>
         <div class="col-sm-6">
             <ol class="breadcrumb pt-0 pr-0 float-left float-sm-right ">
-                <li class="breadcrumb-item"><a href="#" class="default-color">{{ trans('categories_trans.Edit_Category') }}</a>
-                </li>
-                <li class="breadcrumb-item active">{{ trans('categories_trans.Categories') }}
-                </li>
+                <li class="breadcrumb-item"><a href="#"
+                        class="default-color">{{ trans('categories_trans.Edit_Category') }}</a></li>
+                <li class="breadcrumb-item active">{{ trans('categories_trans.Categories') }}</li>
             </ol>
         </div>
     </div>
@@ -32,20 +31,20 @@
             <div class="card-body">
 
 
-                <form method="post" enctype="multipart/form-data" action="{{ Route('admin.categories.update', [$category->id]) }}" autocomplete="off">
+                <form method="post" enctype="multipart/form-data"
+                    action="{{ Route('admin.categories.update', [$category->id]) }}" autocomplete="off">
 
                     @csrf
                     @method('put')
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <x-backend.form.input label="{{ trans('categories_trans.Name') }}" name="name" :value="$category->name" class="form-control" />
+                                <x-backend.form.input label="{{ trans('categories_trans.Name') }}" name="name"
+                                    :value="$category->name" class="form-control" />
                                 {{-- <label>{{ trans('categories_trans.Name') }}<span class="text-danger">*</span></label>
                                 <input type="text" name="name" value="{{old('name',$category->name)}}" class="form-control">
                                 @error('name')
-                                <div class="alert alert-danger">
-                                    {{ $message }}
-                                </div>
+                                    <div class="alert alert-danger">{{ $message }}</div>
                                 @enderror --}}
                             </div>
                         </div>
@@ -56,7 +55,7 @@
                     <div class="row">
 
 
-                        <!-- <div class="col-md-6">
+                        <div class="col-md-6">
                             <div class="form-group">
                                 <label> {{ trans('categories_trans.Category_Parent') }} <span
                                         class="text-danger">*</span></label>
@@ -71,7 +70,7 @@
                                     <div class="alert alert-danger">{{ $message }}</div>
                                 @enderror
                             </div>
-                        </div> -->
+                        </div>
 
 
                     </div>
@@ -79,7 +78,8 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="form-group">
-                                <x-backend.form.textarea label="{{ trans('categories_trans.Description') }}" name="description" value="{{ $category->description }}" />
+                                <x-backend.form.textarea label="{{ trans('categories_trans.Description') }}"
+                                    name="description" value="{{ $category->description }}" />
                             </div>
                         </div>
 
@@ -91,23 +91,21 @@
                             <div class="form-group">
                                 <label>{{ trans('categories_trans.Status') }}<span class="text-danger">*</span></label>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="status" value="active" @checked($category->status
-                                    == 'active')>
+                                    <input class="form-check-input" type="radio" name="status" value="active"
+                                        @checked($category->status == 'active')>
                                     <label class="form-check-label">
                                         {{ trans('categories_trans.Active') }}
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="status" value="inactive" @checked($category->status
-                                    == 'inactive')>
+                                    <input class="form-check-input" type="radio" name="status" value="inactive"
+                                        @checked($category->status == 'inactive')>
                                     <label class="form-check-label">
                                         {{ trans('categories_trans.Inactive') }}
                                     </label>
                                 </div>
                                 @error('status')
-                                <div class="alert alert-danger">
-                                    {{ $message }}
-                                </div>
+                                    <div class="alert alert-danger">{{ $message }}</div>
                                 @enderror
                             </div>
                         </div>
@@ -116,27 +114,25 @@
                             <div class="form-group">
                                 <label>{{ trans('categories_trans.Featured') }}<span class="text-danger">*</span></label>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="featured" value="1" @checked($category->featured
-                                    == '1')>
+                                    <input class="form-check-input" type="radio" name="featured" value="1"
+                                        @checked($category->featured == '1')>
                                     <label class="form-check-label">
                                         {{ trans('categories_trans.Featured') }}
                                     </label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="featured" value="0" @checked($category->featured
-                                    == '0')>
+                                    <input class="form-check-input" type="radio" name="featured" value="0"
+                                        @checked($category->featured == '0')>
                                     <label class="form-check-label">
                                         {{ trans('categories_trans.Not_Featured') }}
                                     </label>
                                 </div>
                                 @error('featured')
-                                <div class="alert alert-danger">
-                                    {{ $message }}
-                                </div>
+                                    <div class="alert alert-danger">{{ $message }}</div>
                                 @enderror
                             </div>
                         </div>
-
+                    
                     </div>
 
                     <br>
@@ -151,18 +147,18 @@
                                 <div class="avatar-img">
                                     {{-- <label class="avatar-label circle" for="upload-photo" >+</label>
                                     <img class="avatar" src="{{URL::asset('assets/images/user.png')}}" alt=""> --}}
-                                    <input onchange="preview()" type="file" name="image" accept="image/*" id="upload-photo" />
+                                    <input onchange="preview()" type="file" name="image" accept="image/*"
+                                        id="upload-photo" />
                                 </div>
                                 @error('image')
-                                <p class="alert alert-danger">
-                                    {{ $message }}
-                                </p>
+                                    <p class="alert alert-danger">{{ $message }}</p>
                                 @enderror
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="border rounded-lg text-center p-3">
-                                <img src="{{ $category->image_url }}" height="200" width="200" class="img-fluid" id="frame" />
+                                <img src="{{ $category->image_url }}" height="200" width="200" class="img-fluid"
+                                    id="frame" />
                             </div>
                         </div>
                     </div>
@@ -173,7 +169,8 @@
 
 
 
-                    <button type="submit" class="btn btn-success btn-md nextBtn btn-lg ">{{ trans('categories_trans.Edit') }}</button>
+                    <button type="submit"
+                        class="btn btn-success btn-md nextBtn btn-lg ">{{ trans('categories_trans.Edit') }}</button>
 
 
                 </form>

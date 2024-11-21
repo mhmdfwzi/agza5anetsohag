@@ -20,8 +20,8 @@ Route::middleware('guest')->group(function () {
 
     // Route::get('verify', [RegisteredUserController::class, 'verify'])
     // ->name('verify');
-    // Route::get('custom_verification', VerifyEmailController::class)
-    // ->name('custom_verification');
+    Route::get('custom_verification', VerifyEmailController::class)
+    ->name('custom_verification');
 
 
     Route::get('login', [AuthenticatedSessionController::class, 'create'])

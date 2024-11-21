@@ -46,22 +46,6 @@
             padding: 10px;
         }
     </style>
-        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-    <style>
-        .ui-autocomplete {
-                    z-index: 1100;
-                    margin-right: 200px;
-                    width: 30%;}
-
-        .product-suggestion {
-                    display: flex;
-                    flex-direction: row;
-                    align-items: center;
-                    padding: 5px;
-                    border-bottom: 1px solid #ccc;
-          }
-
-    </style>
 @section('title')
     {{ trans('products_trans.Edit_Product') }}
 @stop
@@ -102,11 +86,8 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <!-- <x-backend.form.input label="{{ trans('products_trans.Name') }}" name="name"
-                                    value="{{ $product->name }}" class="form-control" /> -->
-                                    <label for="">{{ trans('products_trans.Name') }}</label>
-                                    <input autofocus class="form-control" type="text" id="productName"
-                                    style="direction: rtl ; text-align:right">
+                                <x-backend.form.input label="{{ trans('products_trans.Name') }}" name="name"
+                                    value="{{ $product->name }}" class="form-control" />
                             </div>
                         </div>
 
@@ -173,7 +154,7 @@
                                 <select name="product_type" id="" class="custom-select mr-sm-2">
                                     <option value="">{{ trans('products_trans.Choose') }}</option>
 
-                                    <option value="normal"
+                                    <option value="normal" 
                                     @selected($product->product_type == "normal")>
                                     Normal
                                     </option>
@@ -185,11 +166,11 @@
                                     @selected($product->product_type == "new_arrival")>
                                     New Arrival
                                     </option>
-                                    <option value="top_rated"
+                                    <option value="top_rated" 
                                     @selected($product->product_type == "top_rated")>
                                     Top Rated
                                     </option>
-                                    <option value="other"
+                                    <option value="other" 
                                     @selected($product->product_type == "other")>
                                     Other
                                     </option>
@@ -227,7 +208,7 @@
                     </div>
 
 
-
+                
 
                     <div class="row">
                         <div class="col-md-6">
@@ -244,7 +225,7 @@
                         </div>
                     </div>
 
-
+                    
 
                     <div class="row">
                         <div class="col-md-12">
@@ -254,7 +235,7 @@
                                 </textarea>
 
 
-
+                            
                             </div>
                         </div>
                     </div>
@@ -372,7 +353,7 @@
 @endsection
 @push('scripts')
 
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+{{-- Tagify --}}
 <script src="{{ asset('backend/assets/tagify/tagify.js') }}"></script>
 <script src="{{ asset('backend/assets/tagify/tagify.polyfills.min.js') }}"></script>
 
@@ -385,6 +366,10 @@
     var inputElm = document.querySelector('[name=tags]'),
         tagify = new Tagify(inputElm);
 
+
+
+  
+   
 
     $(document).ready(function() {
         $('input[name="attribute"]').on('change', function() {
@@ -416,41 +401,6 @@
         });
     });
 
-    $(function() {
-            $("#productName").autocomplete({
-                source: function(request, response) {
-                    $.ajax({
-                        url: "{{ route('admin.products.autocomplete') }}",
-                        dataType: "json",
-                        data: {
-                            term: request.term
-                        },
-                        success: function(data) {
-                            var mappedData = $.map(data, function(item) {
-                                var suggestionHtml = '<div class="product-suggestion">' +
-                                    '<div>' + item.name + '</div>' +
-                                    '</div>';
-                                return {
-                                    label: item.name,
-                                    value: item.name,
-                                    html: suggestionHtml,
-                                    slug: item.slug
-                                };
-                            });
-                            response(mappedData);
-                        }
-                    });
-                },
-                minLength: 3,
-                select: function(event, ui) {
-                    $("#productName").val(ui.item.label);
-                    // Optionally, handle selection (e.g., redirect to the product page)
-                    return false;
-                }
-            }).data("ui-autocomplete")._renderItem = function(ul, item) {
-                return $("<li>").append(item.html).appendTo(ul);
-            };
-        });
 
 
 

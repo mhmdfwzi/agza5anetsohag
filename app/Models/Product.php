@@ -16,7 +16,7 @@ class Product extends Model
 
     protected $fillable = [
         'name', 'slug', 'description', 'image', 'category_id', 'brand_id', 'store_id', 'price', 'compare_price', 'status',
-        'featured', 'quantity','short_description','measure','offer','ex_date'
+        'featured', 'quantity','short_description','measure','offer'
         // 'product_type'
     ];
 
@@ -44,7 +44,12 @@ class Product extends Model
             $product->slug = Str::slug($product->name);
         });
     }
-
+    //-----------------------------------------------views----------------------------------------
+    public function incrementViews() {
+        $this->views++;
+        $this->save();
+    }
+ 
     // -------------------------------------Relationships---------------------------------------------- //
 
     //// one-to-one relationship

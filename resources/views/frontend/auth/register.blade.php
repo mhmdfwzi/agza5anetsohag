@@ -44,7 +44,7 @@
                             <div class="col-md-12 col-sm-6">
                                 <div class="form-group"> 
                                     <input class="form-control" type="text" name="first_name" id="reg-fn"
-                                       placeholder=" الاسم الاول      " required>
+                                       placeholder=" الاسم الاول    " required>
                                     @error('first_name')
                                         <div class="alert alert-danger">
                                             <span class="text-danger">{{ $message }}</span>
@@ -72,7 +72,7 @@
                                 <div class="form-group"> 
                                     <input class="form-control" type="text" required  name="phone_number" 
                                     style="direction: ltr; text-align:right"
-                                    placeholder="رقم متصل بالواتس بنفس الصيغة :0111144809 " >
+                                    placeholder="رقم متصل بالواتس بنفس الصيغة :01028212431 " >
                                     @error('phone_number')
                                         <div class="alert alert-danger">
                                             <span class="text-danger">{{ $message }}</span>
@@ -129,16 +129,11 @@
         
                             </div>
 
-                            <div class="row">
+                            <div class="row" style="display:none">
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <select name="neighborhood_id" id="" class="form-control" required>
-                                            <option disabled selected   > اختار المنطقة </option>
+										<input type='hidden' name="neighborhood_id" value="1111" class="form-control" >
                                         
-                                        </select>
-                                        @error('neighborhood_id')
-                                            <div class="alert alert-danger">{{ $message }}</div>
-                                        @enderror
                                     </div>
                                 </div>
                             
@@ -162,10 +157,8 @@
 
 --}}
                             <div class="col-md-12 col-sm-6">
-                                <div class="form-group">
-                                    
+                                <div class="form-group"> 
                                     <input class="form-control" required type="text" placeholder="وصف مكان الوصول" name="street_address">
-                                    
                                     @error('street_address')
                                         <div class="alert alert-danger">
                                             <span class="text-danger">{{ $message }}</span>

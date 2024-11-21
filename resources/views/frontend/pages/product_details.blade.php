@@ -1,5 +1,4 @@
 <x-front-layout title="{{ $product->name }}">
-
     <x-slot name="breadcrumbs">
         <div class="breadcrumbs">
             <div class="container">
@@ -45,10 +44,8 @@
                                     @foreach ($product_pics as $product_pic)  
                                     <img src="{{ asset('storage/'.$product_pic->image) }}" class="img" alt="#">
                                     @endforeach
-                                    @endif
-                                     
-                                </div>
-                                 
+                                    @endif                                     
+                                </div>                                 
                             </main>
                         </div>
                     </div>

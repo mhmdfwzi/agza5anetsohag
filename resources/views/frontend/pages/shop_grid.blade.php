@@ -18,7 +18,7 @@
                     </div>
                     {{-- <div class="col-lg-6 col-md-6 col-12">
                         <ul class="breadcrumb-nav">
-                            <li><a href="{{ route('home') }}"><i class="lni lni-home"></i> Home</a></li>
+                            <li><a href="{{ Route('home') }}"><i class="lni lni-home"></i> Home</a></li>
                             <li><a href="">Shop</a></li>
                             <li>Shop Grid</li>
                         </ul>
@@ -62,32 +62,25 @@
 
 
                             @if (isset($categories))
-                                <div class="checkout-steps-form-style-1">
-                                    <h2>Categories</h2>
-                                    <ul id="accordionExample">
-
-                                        @foreach ($categories as $category)
-                                                <li>
-                                                    <a href="{{ route('shop_grid.index', $category->id) }}">
-                                                        <h6>{{ $category->name }}</h6>
-                                                    </a>
-                                                    <!-- <h6 class="title collapsed" data-bs-toggle="collapse"
-                                                        data-bs-target="#x{{ $category->id }}" aria-expanded="false"
-                                                        aria-controls="x{{ $category->id }}">
-                                                        {{ $category->name }}
-                                                    </h6>
-                                                    <section class="checkout-steps-form-content collapse"
-                                                        id="{{ $category->id }}" aria-labelledby="x{{ $category->id }}"
-                                                        data-bs-parent="#accordionExample">
-                                                        <div class="row">
-                                                        </div>
-                                                    </section> -->
-                                                </li>
-                                        @endforeach
 
 
-                                    </ul>
-                                </div>
+                               <!-- Start Brand Filter -->
+                        <div class="single-widget condition">
+                            <h3>Filter by Brand</h3>
+                            <ul class="list">
+                                @foreach ($categories as $category)
+                                    <li>
+                                        {{-- <input type="radio" class="brands" name="brand" value="{{ $brand->id }}"> --}}
+                                        <input type="checkbox" value="{{ $category->id }}" name="category[]"
+                                            class="category">
+                                        <label>
+                                            {{ $category->name }}
+                                        </label>
+                                    </li>
+                                @endforeach
+                            </ul>
+                        </div>
+                        <!-- End Brand Filter -->
 
                             @endif
                         </div>
@@ -99,21 +92,7 @@
 
 
 
-                        <!-- Start stores Filter -->
-                        <div class="single-widget">
-                            <h3>All Stores </h3>
-                            <ul class="list">
-                                @foreach ($stores as $store)
-                                    <li>
-                                        <input type="checkbox" value="{{ $store->id }}" name="store[]" class="store"
-                                            @checked($store_id == $store->id)>
-                                        <label>{{ $store->name }}
-                                            {{-- ({{ $vendor->products()->count() }} ) --}}
-                                        </label>
-                                    </li>
-                                @endforeach
-                            </ul>
-                        </div>
+                      
                         <!-- End stores Filter -->
 
 
@@ -142,13 +121,13 @@
                             <h3>Price Range</h3>
                             <div class="middle">
                                 <div id="multi_range">
-                                    <span id="left_value">0</span><span> ~ </span><span id="right_value">100000</span>
+                                    <span id="left_value">0</span><span> ~ </span><span id="right_value">10000</span>
                                 </div>
                                 <div class="multi-range-slider my-2">
                                     <input type="range" id="input_left" class="range_slider" min="0"
                                         max="5000" value="0" onmousemove="left_slider(this.value)">
                                     <input type="range" id="input_right" class="range_slider" min="5000"
-                                        max="100000" value="100000" onmousemove="right_slider(this.value)">
+                                        max="100000" value="100" onmousemove="right_slider(this.value)">
                                     <div class="slider">
                                         <div class="track"></div>
                                         <div class="range"></div>
@@ -208,7 +187,7 @@
                                                         <div class="product-image">
 
                                                             <a
-                                                                href="{{ route('products.show_product', [$product->id, $product->slug]) }}">
+                                                                href="{{ Route('products.show_product', [$product->id, $product->slug]) }}">
                                                                 <img src="{{ $product->image_url }}" alt="#">
                                                             </a>
 
@@ -216,15 +195,15 @@
                                                         <div class="product-info">
                                                             <h4 class="title">
                                                                 <a
-                                                                    href="{{ route('products.show_product', [$product->id, $product->slug]) }}">{{ $product->name }}</a>
+                                                                    href="{{ Route('products.show_product', [$product->id, $product->slug]) }}">{{ $product->name }}</a>
                                                             </h4>
                                                             <span class="category">
                                                                 <a
-                                                                    href="{{ route('shop_grid.index', $product->category->id) }}">
+                                                                    href="{{ Route('shop_grid.index', $product->category->id) }}">
                                                                     {{ $product->category->name }} </a>
                                                                 من :
                                                                 <a
-                                                                    href="{{ route('shop_grid.indexStore', $product->store->id) }}">
+                                                                    href="{{ Route('shop_grid.indexStore', $product->store->id) }}">
                                                                     {{ $product->store->name }}
                                                                 </a>
                                                             </span>
@@ -396,23 +375,23 @@
                                     }
                                     productHtml +=
                                         '<div class="product-image">' +
-                                        '<a href="' + getProductroute(product.id, product.slug) +
+                                        '<a href="' + getProductRoute(product.id, product.slug) +
                                         '">' +
                                         '<img src="' + product.image_url + '" alt="#">' +
                                         '</a>' +
                                         '</div>' +
                                         '<div class="product-info">' +
                                         '<h4 class="title">' +
-                                        '<a href="' + getProductroute(product.id, product.slug) +
+                                        '<a href="' + getProductRoute(product.id, product.slug) +
                                         '">' + product.name +
                                         '</a>' +
                                         '</h4>' +
                                         '<span class="category">' +
-                                        '<a href="' + getCategoryroute(product.category_id) + '">' +
+                                        '<a href="' + getCategoryRoute(product.category_id) + '">' +
                                         (product.category ? product.category.name : '') +
                                         '</a>' +
                                         ' من:' +
-                                        '<a href="' + getStoreroute(product.store_id) + '">' +
+                                        '<a href="' + getStoreRoute(product.store_id) + '">' +
                                         (product.store ? product.store.name : '') +
                                         '</a>' +
                                         '</span>' +
@@ -436,17 +415,17 @@
                                     html += productHtml;
                                 }
 
-                                function getProductroute(id, slug) {
+                                function getProductRoute(id, slug) {
                                     return "{{ route('products.show_product', ['id' => ':id', 'slug' => ':slug']) }}"
                                         .replace(':id', id).replace(':slug', slug)
                                 }
 
-                                function getCategoryroute(categoryId) {
+                                function getCategoryRoute(categoryId) {
                                     return "{{ route('shop_grid.index', ['categoryId' => ':categoryId']) }}"
                                         .replace(':categoryId', categoryId);
                                 }
 
-                                function getStoreroute(storeId) {
+                                function getStoreRoute(storeId) {
                                     return "{{ route('shop_grid.indexStore', ['storeId' => ':storeId']) }}"
                                         .replace(':storeId', storeId);
                                 }
@@ -497,17 +476,17 @@
                             sort: sort
                         },
                         success: function(response) {
-                            function getProductroute(id, slug) {
+                            function getProductRoute(id, slug) {
                                     return "{{ route('products.show_product', ['id' => ':id', 'slug' => ':slug']) }}"
                                         .replace(':id', id).replace(':slug', slug)
                                 }
 
-                                function getCategoryroute(categoryId) {
+                                function getCategoryRoute(categoryId) {
                                     return "{{ route('shop_grid.index', ['categoryId' => ':categoryId']) }}"
                                         .replace(':categoryId', categoryId);
                                 }
 
-                                function getStoreroute(storeId) {
+                                function getStoreRoute(storeId) {
                                     return "{{ route('shop_grid.indexStore', ['storeId' => ':storeId']) }}"
                                         .replace(':storeId', storeId);
                                 }
@@ -531,22 +510,22 @@
                                 }
                                 productHtml +=
                                     '<div class="product-image">' +
-                                    '<a href="' + getProductroute(product.id, product.slug) + '">' +
+                                    '<a href="' + getProductRoute(product.id, product.slug) + '">' +
                                     '<img src="' + product.image_url + '" alt="#">' +
                                     '</a>' +
                                     '</div>' +
                                     '<div class="product-info">' +
                                     '<h4 class="title">' +
-                                    '<a href="' + getProductroute(product.id, product.slug) + '">' + product
+                                    '<a href="' + getProductRoute(product.id, product.slug) + '">' + product
                                     .name +
                                     '</a>' +
                                     '</h4>' +
                                     '<span class="category">' +
-                                    '<a href="' + getCategoryroute(product.category_id) + '">' +
+                                    '<a href="' + getCategoryRoute(product.category_id) + '">' +
                                         (product.category ? product.category.name : '') +
                                     '</a>' +
                                     ' من:' +
-                                    '<a href="' + getStoreroute(product.store_id) + '">' +
+                                    '<a href="' + getStoreRoute(product.store_id) + '">' +
                                         (product.store ? product.store.name : '') +
                                     '</a>' +
                                     '</span>' +
@@ -571,7 +550,7 @@
                                 html += productHtml;
                             }
 
-                            function getProductroute(id, slug) {
+                            function getProductRoute(id, slug) {
                                 return "{{ route('products.show_product', ['id' => ':id', 'slug' => ':slug']) }}"
                                     .replace(':id', id).replace(':slug', slug)
                             }

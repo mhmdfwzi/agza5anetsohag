@@ -78,7 +78,21 @@
                                                         data-bs-parent="#accordionExample">
                                                         <div class="row">
 
- 
+                                                            @if ($category->children->count() > 0)
+                                                                <ul class="list" style="margin-left: 10px;">
+                                                                    @foreach ($category->children as $child)
+                                                                        <li class="m-0">
+                                                                            <input type="checkbox"
+                                                                                value="{{ $child->id }}"
+                                                                                name="category[]" class="category"
+                                                                                @checked($category_id == $child->id)>
+                                                                            <label>{{ $child->name }}
+                                                                                ({{ $child->products()->count() }})
+                                                                            </label>
+                                                                        </li>
+                                                                    @endforeach
+                                                                </ul> 
+                                                            @endif
 
                                                         </div>
                                                     </section>
