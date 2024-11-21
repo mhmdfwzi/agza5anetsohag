@@ -97,7 +97,7 @@
                      </div>
                      <div class="col-lg-4 col-12">
                          <div class="copyright">
-                             <p>  All Rights Reserved @agza5anetsohag© Copyright 2024</a>
+                             <p>  All Rights Reserved @agza5anetsohag © Copyright 2024</a>
                              </p>
                          </div>
                      </div>
