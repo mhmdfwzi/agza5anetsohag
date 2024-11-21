@@ -249,15 +249,15 @@
                                 <i class="lni lni-search-alt" style="font-size: 25px"></i>
                             </button></li>
                             <li>
-                                <a href="https://www.facebook.com/TEBA.OPTICS.BANHA"><i
+                                <a href="https://www.facebook.com/profile.php?id=61563651266449"><i
                                         class="lni lni-facebook-filled"></i></a>
                             </li>
                             <li>
-                                <a href="javascript:void(0)"><i class="lni lni-youtube"></i></a>
+                                <a href="https://www.youtube.com/@agza5anetsohag"><i class="lni lni-youtube"></i></a>
                             </li>
                            
                             <li>
-                                <a href="tel:+201005242818" target="_blank"><i class="lni lni-phone"></i></a>
+                                <a href="tel:0111144809" target="_blank"><i class="lni lni-phone"></i></a>
                             </li>
                              
                             

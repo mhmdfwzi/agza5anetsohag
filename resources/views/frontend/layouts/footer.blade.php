@@ -24,9 +24,9 @@
                          <!-- Single Widget -->
                          <div class="single-footer f-contact">
                              <h3>ابق على تواصل معنا</h3>
-                             <p class="phone">Phone: 01005242818</p>
+                             <p class="phone">Phone: 0111144809</p>
                              <p class="mail">
-                                 <a href="info@tebaoptics.com">info@tebaoptics.com</a>
+                                 <a href="agza5anetsohag@gmail.com">agza5anetsohag@gmail.com</a>
                              </p>
                          </div>
                          <!-- End Single Widget -->
@@ -97,7 +97,7 @@
                      </div>
                      <div class="col-lg-4 col-12">
                          <div class="copyright">
-                             <p>  All Rights Reserved © Copyright 2024</a>
+                             <p>  All Rights Reserved @agza5anetsohag© Copyright 2024</a>
                              </p>
                          </div>
                      </div>
@@ -106,11 +106,11 @@
                              <li>
                                  <span>تابعنا على :</span>
                              </li>
-                             <li><a href="https://www.facebook.com/TEBA.OPTICS.BANHA"><i
+                             <li><a href="https://www.facebook.com/profile.php?id=61563651266449"><i
                                          class="lni lni-facebook-filled"></i></a></li>
                              <li><a href="javascript:void(0)"><i class="lni lni-twitter-original"></i></a></li>
                              <li><a href="javascript:void(0)"><i class="lni lni-instagram"></i></a></li>
-                             <li><a href="javascript:void(0)"><i class="lni lni-google"></i></a></li>
+                             <li><a href="https://www.youtube.com/@agza5anetsohag"><i class="lni lni-google"></i></a></li>
                          </ul>
                      </div>
                  </div>
