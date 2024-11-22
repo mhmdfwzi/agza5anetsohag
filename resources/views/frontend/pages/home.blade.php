@@ -104,31 +104,30 @@
 </section>
 <!-- End Trending Product Area -->
     <!-- Start Brands Area -->
-    <div class="brands" style="direction: ltr">
-        <div class="container">
-                  <div class="row">
-                            <div class="col-lg-6 offset-lg-3 col-md-12 col-12">
-                                <div class="section-title">
-                                    <h2>التصنيفات</h2>
-                          </div>
-                                   
-                            </div>
-                  </div>
+   <!-- Start Brands Area -->
+   <div class="brands" style="direction: ltr">
+    <div class="container">
+              <div class="row">
+                        <div class="col-lg-6 offset-lg-3 col-md-12 col-12">
+                                  <h2 class="title">البائعين المميزين</h2>
+                        </div>
+              </div>
 
-                  <div class="brands-logo-wrapper">
-                            <div
-                                      class="brands-logo-carousel d-flex align-items-center justify-content-between">
-                                      @foreach ($main_categories as $main_category)
-                                      <div class="brand-logo">
-                                          <a href="{{ Route('shop_grid.index', $main_category->id) }}">
-                                                          <img src="{{ $main_category->image_url }}" alt="#">
-                                                          <p>{{ $main_category->name }}</p>
-                                                </a>
-                                      </div>
-                                      @endforeach
-                            </div>
-                  </div>
-        </div>
+              <div class="brands-logo-wrapper">
+                        <div
+                                  class="brands-logo-carousel d-flex align-items-center justify-content-between">
+                                  @foreach ($stores as $store)
+                                  <div class="brand-logo">
+                                            <a
+                                                      href="{{ route('shop_grid.indexStore', ['storeId' => $store->id]) }}">
+                                                      <img src="{{ $store->cover_image_url }}" alt="#">
+                                                      <p>{{ $store->name }}</p>
+                                            </a>
+                                  </div>
+                                  @endforeach
+                        </div>
+              </div>
+    </div>
 </div>
 <!-- End Brands Area -->
 

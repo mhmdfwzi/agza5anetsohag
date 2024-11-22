@@ -6,7 +6,6 @@
 
     <x-slot name="breadcrumbs">
 
-
         <!-- Start Breadcrumbs -->
         <div class="breadcrumbs">
             <div class="container">
