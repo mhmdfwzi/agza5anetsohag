@@ -9,7 +9,7 @@
     <meta name="description" content="{{ config('app.name') }} | {{ $title }}" />
     <meta name="keyword" content="{{ config('app.name') }} | {{ $title }}" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('frontend/assets/images/icon.ico') }}" />    
+    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('frontend/assets/images/favicon.png') }}" />    
     <!-- Add Open Graph metadata for social media sharing      </title>-->
     <link rel="canonical" href="https://agza5anetsohag.com/en/@yield('Page-url')">
     <meta property="og:title" content="{{ config('app.name') }} | @yield('Page-Title')">
